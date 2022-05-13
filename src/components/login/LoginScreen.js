@@ -1,23 +1,56 @@
+import './LoginScreen.css';
+import Logo from '../assest/logo.png';
+import { useState } from 'react';
+import axios from 'axios';
+
+const urlApi = 'http://localhost:8080/users';
 
 export const LoginScreen = () => {
-  return (
-    <form>
-      <div calssName='form-inner'>
-        <h2>Login</h2>
-        {/* ERROR */}
-        <div className='form-group'>
-          <label htmlFor='name'>Name:</label>
-          <input type='text' name='name' id='name' />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='email'>Email:</label>
-          <input type='text' name='email' id='email' />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password'>Password:</label>
-          <input type='password' name='password' id='password' />
-        </div>
+  const [datos, setDatos] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleInputChange = (event) => {
+
+    setDatos({
+      ...datos,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const enviarDatos = (event) => {
+    event.preventDefault()
+    console.log('enviando datos...' + datos.email + ' ' + datos.password)
+  }
+
+  const login = () => {
+    axios.post(urlApi, { params: { email: datos.email, password: datos.password } })
+      .then(response => {
+        console.log(datos.email, datos.password)
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(datos.email, datos.password)
+        console.log(error);
+})
+
+}
+
+return (
+  <div className='wrapper fadeInDown'>
+    <div id='formContent'>
+      <div className='fadeIn first'>
+        <img src={Logo} id='icon' alt='User Icon' />
       </div>
-    </form>
-  )
+      <form onSubmit={enviarDatos}>
+        <input type='text' className='fadeIn second' name='email' placeholder='email' onChange={handleInputChange} />
+        <input type='password' className='fadeIn third' name='password' placeholder='password' onChange={handleInputChange} />
+        <input type='submit' className='fadeIn fourth' value='Log In' onClick={login}/>
+      </form>
+    </div>
+  </div>
+);
+    
+  
 }

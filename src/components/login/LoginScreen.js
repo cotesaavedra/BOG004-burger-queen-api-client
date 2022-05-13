@@ -2,7 +2,7 @@
 export const LoginScreen = () => {
   return (
     <form>
-      <div calssName='form-inner'>
+      <div className='form-inner'>
         <h2>Login</h2>
         {/* ERROR */}
         <div className='form-group'>

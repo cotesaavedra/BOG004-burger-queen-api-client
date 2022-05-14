@@ -3,7 +3,7 @@ import Logo from '../assest/logo.png';
 import { useState } from 'react';
 import axios from 'axios';
 
-const urlApi = 'http://localhost:8080/users';
+const urlApi = 'http://localhost:8080/login';
 
 export const LoginScreen = () => {
   const [datos, setDatos] = useState({
@@ -23,9 +23,10 @@ export const LoginScreen = () => {
     event.preventDefault()
     console.log('enviando datos...' + datos.email + ' ' + datos.password)
   }
-
+  // params: { email: datos.email, password: datos.password }
   const login = () => {
-    axios.post(urlApi, { params: { email: datos.email, password: datos.password } })
+    let data = { email: datos.email, password: datos.password }
+    axios.post(urlApi, data)
       .then(response => {
         console.log(datos.email, datos.password)
         console.log(response.data);

@@ -1,6 +1,6 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { NavLeft } from '../NavLeft';
+import { NavLeft } from '../nav.js/NavLeft';
 
 export const WaiterScreen = () => {
   const [products, setProducts] = useState([]);

@@ -1,6 +1,6 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { NavLeft } from '../NavLeft';
+import { NavLeft } from '../nav.js/NavLeft';
 
 export const WaiterScreen = () => {
   const [products, setProducts] = useState([]);
@@ -9,7 +9,7 @@ export const WaiterScreen = () => {
       method: 'GET', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjQ4OTU4OSwiZXhwIjoxNjUyNDkzMTg5LCJzdWIiOiIyIn0.q9RMdGYeZiOjjwanJ1tBZnMdWE5aC5ZgjaMHvu5BTrg'
+        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjQ4OTU4OSwiZXhwIjoxNjUyNDkzMTg5LCJzdWIiOiIyIn0.q9RMdGYeZiOjjwanJ1tBZnMdWE5aC5ZgjaMHvu5BTrg',
       }
     })
       .then(response => response.json())

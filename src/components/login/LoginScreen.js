@@ -2,10 +2,12 @@ import './LoginScreen.css';
 import Logo from '../assest/logo.png';
 import { useState } from 'react';
 import axios from 'axios';
-
-const urlApi = 'http://localhost:8080/users';
+import { Apiurl } from '../../services/apirest';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginScreen = () => {
+  const navigate = useNavigate();
+
   const [datos, setDatos] = useState({
     email: '',
     password: ''
@@ -17,40 +19,46 @@ export const LoginScreen = () => {
       ...datos,
       [event.target.name]: event.target.value
     })
+
   }
 
   const enviarDatos = (event) => {
     event.preventDefault()
-    console.log('enviando datos...' + datos.email + ' ' + datos.password)
   }
-
   const login = () => {
-    axios.post(urlApi, { params: { email: datos.email, password: datos.password } })
+    let data = { email: datos.email, password: datos.password };
+    let url = Apiurl + 'login'
+    axios.post(url, data)
       .then(response => {
-        console.log(datos.email, datos.password)
-        console.log(response.data);
+        const { accessToken } = response.data;
+        console.log('token:', accessToken);
+        if (accessToken) {
+          navigate('/', {
+            replace: true
+          });
+          console.log('Redireccionando a vista Mesero...')
+        }
       })
       .catch(error => {
         console.log(datos.email, datos.password)
         console.log(error);
-})
+      })
+  }
 
-}
-
-return (
-  <div className='wrapper fadeInDown'>
-    <div id='formContent'>
-      <div className='fadeIn first'>
-        <img src={Logo} id='icon' alt='User Icon' />
+  return (
+    <div className='wrapper fadeInDown'>
+      <div id='formContent'>
+        <div className='fadeIn first'>
+          <img src={Logo} id='icon' alt='User Icon' />
+        </div>
+        <form onSubmit={enviarDatos}>
+          <input type='text' className='fadeIn second' name='email' placeholder='email' onChange={handleInputChange} />
+          <input type='password' className='fadeIn third' name='password' placeholder='password' onChange={handleInputChange} />
+          <input type='submit' className='fadeIn fourth' value='Log In' onClick={login} />
+        </form>
       </div>
-      <form onSubmit={enviarDatos}>
-        <input type='text' className='fadeIn second' name='email' placeholder='email' onChange={handleInputChange} />
-        <input type='password' className='fadeIn third' name='password' placeholder='password' onChange={handleInputChange} />
-        <input type='submit' className='fadeIn fourth' value='Log In' onClick={login}/>
-      </form>
     </div>
-  </div>
-);
-    
-  
+  );
+
+
 }

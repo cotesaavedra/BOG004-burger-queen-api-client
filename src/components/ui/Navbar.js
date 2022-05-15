@@ -15,6 +15,12 @@ export const Navbar = () => {
             </Link>
             <div className="navbar-collapse">
                 <div className="navbar-nav">
+                <NavLink
+                        className={({ isActive }) => "nav-item nav-link " + (isActive ? 'active' : '')}
+                        to="/"
+                    >
+                        Home
+                    </NavLink>
                     <NavLink
                         className={({ isActive }) => "nav-item nav-link " + (isActive ? 'active' : '')}
                         to="/chef"

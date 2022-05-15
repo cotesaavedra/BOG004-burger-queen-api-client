@@ -9,13 +9,14 @@ export const WaiterScreen = () => {
       method: 'GET', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjQ4MDg0MSwiZXhwIjoxNjUyNDg0NDQxLCJzdWIiOiIyIn0.78J-WlHYez2FqAMjf4Zlte0ysoI25dgRp0DVUH09HHY'
+        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjQ4OTU4OSwiZXhwIjoxNjUyNDkzMTg5LCJzdWIiOiIyIn0.q9RMdGYeZiOjjwanJ1tBZnMdWE5aC5ZgjaMHvu5BTrg'
       }
     })
       .then(response => response.json())
       .then(data => {
-        setProducts(data);
-        // console.log(data)
+        if (typeof data === 'object' && data.length > 0){
+           setProducts(data);
+        }
       });
   }
 
@@ -32,7 +33,6 @@ export const WaiterScreen = () => {
         {products.map((product) => (
           <p key={product.id}>{product.name}</p>
         ))}
-
       </Col>
 
     </Row>

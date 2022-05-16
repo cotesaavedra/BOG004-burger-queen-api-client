@@ -9,7 +9,7 @@ export const WaiterScreen = () => {
       method: 'GET', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjQ4OTU4OSwiZXhwIjoxNjUyNDkzMTg5LCJzdWIiOiIyIn0.q9RMdGYeZiOjjwanJ1tBZnMdWE5aC5ZgjaMHvu5BTrg',
+        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxlaWR5LmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjcyMDc0NCwiZXhwIjoxNjUyNzI0MzQ0LCJzdWIiOiIzIn0.rJ1LDlzt6Ju4fPMSkwu7BnGrhItCpQXHa5E76RJUG5Y',
       }
     })
       .then(response => response.json())

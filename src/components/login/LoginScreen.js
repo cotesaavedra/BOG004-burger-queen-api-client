@@ -1,10 +1,17 @@
 import './LoginScreen.css';
-import Logo from '../assest/logo.png';
-import { useState } from 'react';
+// import Logo from '../assest/logo.png';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { Apiurl } from '../../services/apirest';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/authContext';
+import { types } from '../../types/types';
+
 
 export const LoginScreen = () => {
+  const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
+
   const [datos, setDatos] = useState({
     email: '',
     password: ''
@@ -16,6 +23,7 @@ export const LoginScreen = () => {
       ...datos,
       [event.target.name]: event.target.value
     })
+
   }
 
   const enviarDatos = (event) => {
@@ -26,9 +34,17 @@ export const LoginScreen = () => {
     let url = Apiurl + 'login'
     axios.post(url, data)
       .then(response => {
-        const { accessToken } = response.data;
-        console.log('token:', accessToken);
+        const { accessToken, user } = response.data;
+        console.log('token:', accessToken, user);
         if (accessToken) {
+          const action = {
+            type: types.login,
+            payload: user
+          }
+          dispatch(action);
+          navigate('/', {
+            replace: true
+          });
           console.log('Redireccionando a vista Mesero...')
         }
       })
@@ -39,19 +55,44 @@ export const LoginScreen = () => {
   }
 
   return (
-    <div className='wrapper fadeInDown'>
-      <div id='formContent'>
-        <div className='fadeIn first'>
-          <img src={ Logo } id='icon' alt='User Icon' />
+    <div className='container'>
+    <div className='d-flex justify-content-center h-100'>
+      <div className='card'>
+        <div className='card-header'>
+          <h3>Sign In</h3>
         </div>
-        <form onSubmit={ enviarDatos }>
-          <input type='text' className='fadeIn second' name='email' placeholder='email' onChange={handleInputChange} />
-          <input type='password' className='fadeIn third' name='password' placeholder='password' onChange={handleInputChange} />
-          <input type='submit' className='fadeIn fourth' value='Log In' onClick={login} />
-        </form>
+        <div className='card-body'>
+          <form onSubmit={enviarDatos}>
+            <div className='input-group form-group'>
+              <div className='input-group-prepend'>
+                <span className='input-group-text'><i className='fas fa-user'></i></span>
+              </div>
+              <input type='text' className='form-control' name='email' placeholder='Email' onChange={handleInputChange} />              
+            </div>
+            <div className='input-group form-group'>
+              <div className='input-group-prepend'>
+                <span className='input-group-text'><i className='fas fa-key'></i></span>
+              </div>
+              <input type='password' className='form-control' name='password' placeholder='Password' onChange={handleInputChange} />
+            </div>
+            <div className='form-group'>
+              <input type='submit' className='btn float-right login_btn' value='Login' onClick={login} />
+            </div>
+          </form>
+        </div>
+        <div className='card-footer'>
+          <div className='d-flex justify-content-center links'>
+            Don't have an account?<a href='www.google.com'>Sign Up</a>
+          </div>
+          <div className='d-flex justify-content-center'>
+            <a href='www.google.com'>Forgot your password?</a>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
   );
-
-
 }
+
+
+

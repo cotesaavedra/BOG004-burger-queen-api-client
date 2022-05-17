@@ -28,25 +28,30 @@ export const Navbar = () => {
             </Link>
             <div className="navbar-collapse">
                 <div className="navbar-nav">
-               
+                    { user.roles.chef && 
                     <NavLink
                         className={({ isActive }) => "nav-item nav-link " + (isActive ? 'active' : '')}
                         to="/chef"
                     >
                         Chef
                     </NavLink>
+                    }
+                    {user.roles.waiter &&
                     <NavLink
                         className={({ isActive }) => "nav-item nav-link " + (isActive ? 'active' : '')}
                         to="/waiter"
                     >
                         Waiter
                     </NavLink>
+                    }
+                    {user.roles.admin &&
                     <NavLink
                         className={({ isActive }) => "nav-item nav-link " + (isActive ? 'active' : '')}
                         to="/admin"
                     >
                         Admin
                     </NavLink>
+                    }
                     <div className='navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end'>
                         <ul className='navbar-nav ml-auto'>
                             <spa className='nav-item nav-link text-info'>

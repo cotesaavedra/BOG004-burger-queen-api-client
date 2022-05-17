@@ -1,3 +1,4 @@
+import './NavBar.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../auth/authContext';
 import { Link, NavLink, useNavigate } from 'react-router-dom';

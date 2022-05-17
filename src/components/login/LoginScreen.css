@@ -1,74 +1,69 @@
-/* Made with love by Mutiullah Samim*/
-
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,body{
-background-image: url('https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
-}
-
-.container{
-height: 100%;
-align-content: center;
-}
-
-.card{
-height: 370px;
-margin-top: auto;
-margin-bottom: auto;
-width: 400px;
-background-color: rgba(255, 255, 255, 0.5) !important;
-}
-
-
-.card-header h3{
-color: black;
-}
-
-
-.input-group-prepend span{
-width: 50px;
-background-color: #5AA02A;
-color: black;
-border:0 !important;
-}
-
-input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
+html, body{
+    height:100%;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+  }
+#cont-login {
+    background-image: url('https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Numans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
 
 }
 
-.remember{
-color: black;
+.card {
+    height: 420px;
+    text-align: center;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
+.card-body {
+    padding: 3rem !important;
 }
 
-.login_btn{
-color: black;
-background-color: #5AA02A;
-width: 100px;
+.row {
+    justify-content: center;
 }
 
-.login_btn:hover{
-color: black;
-background-color: white;
+.col-auto .mb-2 {
+    width: 300px;
 }
 
-.links{
-color: black;
+.mb-2 .input-group-text {
+    background: #5AA02A;
+    border: none;
 }
 
-.links a{
-margin-left: 4px;
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: white !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.login_btn {
+    background-color: #5AA02A !important;
+    border-radius: 20px !important;
+    width: 150px;
+}
+
+.d-flex {
+    color: #3b3b3b;
+    font-weight: 700;
+}
+
+a {
+    color: #467d21 !important;
+}
+#logo{
+    width: 70px;
 }

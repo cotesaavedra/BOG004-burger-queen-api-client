@@ -14,17 +14,17 @@ export const DashboardRoutes = () => {
     <>
       <Navbar />
       <Routes>
-        <Route path='waiter' element={
+        <Route path='/waiter' element={
           <ProtectedRoute isAllowed={user.roles.waiter}>
             <WaiterScreen />
           </ProtectedRoute>}
         />
-        <Route path='chef' element={
+        <Route path='/chef' element={
           <ProtectedRoute isAllowed={user.roles.chef}>
             <ChefScreen />
           </ProtectedRoute>}
         />
-        <Route path='admin' element={
+        <Route path='/admin' element={
           <ProtectedRoute isAllowed={user.roles.admin}>
             <AdminScreen />
           </ProtectedRoute>}

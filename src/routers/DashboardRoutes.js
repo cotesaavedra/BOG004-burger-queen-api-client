@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthContext } from '../auth/authContext';
 import { AdminScreen } from '../components/adm/AdminScreen';
 import { ChefScreen } from '../components/chef/ChefScreen';
-import { HomeScreen } from '../components/home/HomeScreen';
+import { LoginScreen } from '../components/login/LoginScreen';
 import { Navbar } from '../components/ui/Navbar';
 import { WaiterScreen } from '../components/waiter/WaiterScreen';
 import { ProtectedRoute } from './ProtectedRoute';
@@ -29,8 +29,11 @@ export const DashboardRoutes = () => {
             <AdminScreen />
           </ProtectedRoute>}
         />
-        <Route path='/' element={<HomeScreen />} />
+        <Route
+          path="*"
+          element={<Navigate to={user.roles.waiter ? '/waiter' : user.roles.chef ? '/chef' : user.roles.admin ? '/admin' : <LoginScreen />} replace />}
+        />
       </Routes>
     </>
   )
-} 
+}

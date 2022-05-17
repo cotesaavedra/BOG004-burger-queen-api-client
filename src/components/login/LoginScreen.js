@@ -33,6 +33,7 @@ export const LoginScreen = () => {
   const enviarDatos = (event) => {
     event.preventDefault()
   }
+
   const login = () => {
     let data = { email: datos.email, password: datos.password };
     let url = Apiurl + 'login'
@@ -46,9 +47,21 @@ export const LoginScreen = () => {
             payload: user
           }
           dispatch(action);
-          navigate('/', {
-            replace: true
-          });
+          if(user.roles.waiter) {
+            navigate('/waiter', {
+              replace: true
+            });
+          } else if(user.roles.chef) {
+            navigate('/chef', {
+              replace: true
+            });
+          }
+          else if (user.roles.admin){
+            navigate('/admin', {
+              replace: true
+            });
+          }
+         
           console.log('Redireccionando a vista Mesero...')
         }
       })

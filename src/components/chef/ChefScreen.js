@@ -1,6 +1,5 @@
 import { Row, Col } from 'react-bootstrap';
-import { NavLeft } from '../nav.js/NavLeft';
-
+import { NavLeft } from '../ui/left/NavLeft';
 export const ChefScreen= () =>{
   return (
     <Row>

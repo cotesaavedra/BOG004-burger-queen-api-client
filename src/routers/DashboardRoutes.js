@@ -4,7 +4,7 @@ import { AuthContext } from '../auth/authContext';
 import { AdminScreen } from '../components/adm/AdminScreen';
 import { ChefScreen } from '../components/chef/ChefScreen';
 import { LoginScreen } from '../components/login/LoginScreen';
-import { Navbar } from '../components/ui/Navbar';
+import { Navbar } from '../components/ui/top/Navbar';
 import { WaiterScreen } from '../components/waiter/WaiterScreen';
 import { ProtectedRoute } from './ProtectedRoute';
 

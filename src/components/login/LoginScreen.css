@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300&display=swap');
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
 #cont-login {
     background-image: url('https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
     background-size: cover;

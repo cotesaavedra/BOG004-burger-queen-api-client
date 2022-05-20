@@ -20,7 +20,7 @@ export const LoginScreen = () => {
     email: '',
     password: ''
   })
-  
+
   const handleInputChange = (event) => {
     setdataUser({
       ...dataUser,
@@ -74,7 +74,18 @@ export const LoginScreen = () => {
               <img id='logo' src={logo} alt='logo' />
             </div>
             <div className='card-body'>
+<<<<<<< HEAD
               <Form onSubmit={removeSubmit}>
+=======
+              <Form onSubmit={handleSubmit(removeSubmit)}>
+                {window.location.hash==='#notallowed' &&
+                <Row className="align-items-center">
+                  <Col xs="auto">
+                    <p>Usted no tiene permisos</p>
+                  </Col>
+                </Row>
+                }
+>>>>>>> 9f43c3bd616ff34165bb84cca43c08ce6144af2f
                 <Row className="align-items-center">
                   <Col xs="auto">
                     <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
@@ -133,7 +144,7 @@ export const LoginScreen = () => {
                       />
                     </InputGroup>
                     <InputGroup>
-                    {errors.password && <p className='error-message'>{errors.password.message}</p>}
+                      {errors.password && <p className='error-message'>{errors.password.message}</p>}
                     </InputGroup>
                   </Col>
                   <Col xs="auto">

@@ -74,7 +74,7 @@ export const LoginScreen = () => {
               <img id='logo' src={logo} alt='logo' />
             </div>
             <div className='card-body'>
-              <Form onSubmit={handleSubmit(removeSubmit)}>
+              <Form onSubmit={removeSubmit}>
                 <Row className="align-items-center">
                   <Col xs="auto">
                     <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>

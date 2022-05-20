@@ -31,7 +31,7 @@ export const DashboardRoutes = () => {
         />
         <Route
           path="*"
-          element={<Navigate to={user.roles.waiter ? '/waiter' : user.roles.chef ? '/chef' : user.roles.admin ? '/admin' : <LoginScreen />} replace />}
+          element={<Navigate to={user.roles.waiter ? '/waiter' : user.roles.chef ? '/chef' : user.roles.admin ? '/admin' : <LoginScreen/>} replace />}
         />
       </Routes>
     </>

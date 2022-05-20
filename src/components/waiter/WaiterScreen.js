@@ -1,9 +1,9 @@
 import './WaiterScreen.css';
 import { Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
-import { NavLeft } from '../nav.js/NavLeft';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTh, faCutlery } from '@fortawesome/free-solid-svg-icons';
+import { NavLeft } from '../ui/left/NavLeft';
 
 
 export const WaiterScreen = () => {
@@ -14,7 +14,7 @@ export const WaiterScreen = () => {
       method: 'GET', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjgyMjI4MCwiZXhwIjoxNjUyODI1ODgwLCJzdWIiOiIyIn0.EZihTCXmhHqIUCb3V2djbZCdSajJG4AOmdEFfi1BVHo',
+        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MzAxMDI2NSwiZXhwIjoxNjUzMDEzODY1LCJzdWIiOiIyIn0.0LsOJDVn7u3cdJkbo1l00QEd0B9eKP5vdyxVRQ5Fhj4',
       }
     })
       .then(response => response.json())

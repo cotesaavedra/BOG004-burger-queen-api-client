@@ -1,10 +1,10 @@
 import './NavBar.css';
 import { useContext } from 'react';
-import { AuthContext } from '../../auth/authContext';
+import { AuthContext } from '../../../auth/authContext';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-import Logo from '../assest/logo.png';
-import { types } from '../../types/types';
+import Logo from '../../assest/logo.png';
+import { types } from '../../../types/types';
 
 export const Navbar = () => {
     const { user, dispatch } = useContext(AuthContext);

@@ -1,38 +1,52 @@
-import { Row, Col, Button } from 'react-bootstrap';
-import { useState } from 'react';
-import { NavLeft } from '../NavLeft';
+import './WaiterScreen.css';
+import { Row, Col } from 'react-bootstrap';
+import { useContext, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTh, faCutlery } from '@fortawesome/free-solid-svg-icons';
+import { NavLeft } from '../ui/left/NavLeft';
+import { AuthContext } from '../../auth/authContext';
+
 
 export const WaiterScreen = () => {
+  const { user } = useContext(AuthContext);
+
   const [products, setProducts] = useState([]);
   const viewProduct = () => {
     fetch('http://localhost:8080/products', {
       method: 'GET', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MjQ4MDg0MSwiZXhwIjoxNjUyNDg0NDQxLCJzdWIiOiIyIn0.78J-WlHYez2FqAMjf4Zlte0ysoI25dgRp0DVUH09HHY'
+        'authorization': 'Bearer ' + user.token, 
       }
     })
       .then(response => response.json())
       .then(data => {
-        setProducts(data);
-        // console.log(data)
+        if (typeof data === 'object' && data.length > 0) {
+          setProducts(data);
+        }
       });
   }
-
   return (
     <Row>
-      <NavLeft nombre='diego'>
-        <h1>hola</h1>
-        <h1>jeje</h1>
-        <Button variant="outline-success" onClick={viewProduct}>Menú</Button>
+      <NavLeft>
+        <div onClick={viewProduct}>
+          <p><FontAwesomeIcon icon={faTh} /> Menú</p>
+        </div>
+        <div onClick={viewProduct}>
+          <p><FontAwesomeIcon icon={faCutlery} /> Nueva Orden</p>
+        </div>
       </NavLeft>
-      <Col lg={9}>
-        <h1>WaiterScreen</h1>
+      <Col lg={10}>
+        <h2>Menú</h2>
         {/* <p>{products}</p> */}
-        {products.map((product) => (
-          <p key={product.id}>{product.name}</p>
+        <div className='products-container'>
+          {products.map((product) => (
+            <div className='product'>
+              <h6 key={product.id + 'name'}>{product.name}</h6>
+              <p key={product.id + 'price'}>Precio: ${product.price}</p>
+            </div>
         ))}
-
+        </div>
       </Col>
 
     </Row>

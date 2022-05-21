@@ -1,0 +1,23 @@
+.col-lg-2 {
+    height: 100vh;
+    box-shadow: 0px 0px 10px -6px black;
+    padding-right: 0px !important;
+}
+
+#cont-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* padding-left: 10px; */
+    margin-top: 20px;
+    width: 100%;
+}
+#cont-nav p {
+    padding: 10px;
+    margin: 0px;
+   
+}
+#cont-nav div:hover {
+    background: #5AA02A;
+    
+}

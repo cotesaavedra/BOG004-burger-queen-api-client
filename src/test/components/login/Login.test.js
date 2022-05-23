@@ -1,12 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { LoginScreen } from "../../../components/login/LoginScreen.js";
+import { LoginScreen, useForm } from "../../../components/login/LoginScreen.js";
 import { AuthContext } from "../../../auth/authContext.js";
+
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
     useNavigate: () => (jest.fn())
 }));
+jest.mock('react-hook-form', () => ({
+    ...jest.requireActual('react-hook-form'),
+    useForm : () => (jest.fn())
+}));
+
 
 test('login', () => {
     const userMock = {};
@@ -22,3 +28,8 @@ test('login', () => {
     const label = screen.getByText('Email');
     expect(label).toBeInTheDocument();
 })
+test('renders loginScreen', () => {
+    const { register, formState: { errors } } = useForm(); 
+
+expect('cont-login').toBeInTheDocument();
+}

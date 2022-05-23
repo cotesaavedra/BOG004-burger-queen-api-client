@@ -41,7 +41,7 @@ export const LoginScreen = () => {
         if (accessToken) {
           const action = {
             type: types.login,
-            payload: user
+            payload:{...user, token:accessToken} 
           }
           dispatch(action);
           if (user.roles.waiter) {
@@ -74,7 +74,7 @@ export const LoginScreen = () => {
               <img id='logo' src={logo} alt='logo' />
             </div>
             <div className='card-body'>
-              <Form onSubmit={handleSubmit(removeSubmit)}>
+            <Form onSubmit={handleSubmit(removeSubmit)}>
                 {window.location.hash==='#notallowed' &&
                 <Row className="align-items-center">
                   <Col xs="auto">

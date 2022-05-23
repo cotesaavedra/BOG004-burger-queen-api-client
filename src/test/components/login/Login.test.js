@@ -29,7 +29,7 @@ test('login', () => {
     expect(label).toBeInTheDocument();
 })
 test('renders loginScreen', () => {
-    const { register, formState: { errors } } = useForm(); 
+     
 
 expect('cont-login').toBeInTheDocument();
 }

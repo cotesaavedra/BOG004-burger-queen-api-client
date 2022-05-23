@@ -12,7 +12,7 @@ import { faUser, faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
 
 export const LoginScreen = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
 
@@ -41,7 +41,7 @@ export const LoginScreen = () => {
         if (accessToken) {
           const action = {
             type: types.login,
-            payload: user
+            payload:{...user, token:accessToken} 
           }
           dispatch(action);
           if (user.roles.waiter) {
@@ -74,14 +74,7 @@ export const LoginScreen = () => {
               <img id='logo' src={logo} alt='logo' />
             </div>
             <div className='card-body'>
-              <Form onSubmit={handleSubmit(removeSubmit)}>
-                {window.location.hash==='#notallowed' &&
-                <Row className="align-items-center">
-                  <Col xs="auto">
-                    <p>Usted no tiene permisos</p>
-                  </Col>
-                </Row>
-                }
+              <Form onSubmit={removeSubmit}>
                 <Row className="align-items-center">
                   <Col xs="auto">
                     <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>

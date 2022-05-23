@@ -1,13 +1,14 @@
 import './WaiterScreen.css';
 import { Row, Col } from 'react-bootstrap';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTh, faCutlery } from '@fortawesome/free-solid-svg-icons';
 import { NavLeft } from '../ui/left/NavLeft';
+import { AuthContext } from '../../auth/authContext';
 import ProductCard from '../products/card/Products';
 
-
 export const WaiterScreen = () => {
+  const { user } = useContext(AuthContext);
 
   const [products, setProducts] = useState([]);
   const viewProduct = () => {
@@ -15,7 +16,7 @@ export const WaiterScreen = () => {
       method: 'GET', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MzA2MjU2NSwiZXhwIjoxNjUzMDY2MTY1LCJzdWIiOiIyIn0.cUo00DtcHfjeWk6oc4FMWQ2APbqbrNKZj4ia9hq5ciQ',
+        'authorization': 'Bearer ' + user.token,
       }
     })
       .then(response => response.json())

@@ -1,21 +1,23 @@
 import './WaiterScreen.css';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Collapse } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTh, faCutlery } from '@fortawesome/free-solid-svg-icons';
 import { NavLeft } from '../ui/left/NavLeft';
 import ProductCard from '../products/card/Products';
+import NewOrder from '../orders/NewOrder';
 
 
 export const WaiterScreen = () => {
 
   const [products, setProducts] = useState([]);
+  const [open, setOpen] = useState(false);
   const viewProduct = () => {
     fetch('http://localhost:8080/products', {
       method: 'GET', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MzA2MjU2NSwiZXhwIjoxNjUzMDY2MTY1LCJzdWIiOiIyIn0.cUo00DtcHfjeWk6oc4FMWQ2APbqbrNKZj4ia9hq5ciQ',
+        'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWNlLmhvcHBlckBzeXN0ZXJzLnh5eiIsImlhdCI6MTY1MzA3ODUyMywiZXhwIjoxNjUzMDgyMTIzLCJzdWIiOiIyIn0.6c-YtsGVkjTAKPGC9Pk_OfwRWhhuMfi7CBsLWabTtUI',
       }
     })
       .then(response => response.json())
@@ -28,27 +30,31 @@ export const WaiterScreen = () => {
         }
       });
   }
+
+  // console.log(products)
   return (
     <Row>
       <NavLeft>
         <div onClick={viewProduct}>
           <p><FontAwesomeIcon icon={faTh} /> Menú</p>
         </div>
-        <div onClick={viewProduct}>
-          <p><FontAwesomeIcon icon={faCutlery} /> Nueva Orden</p>
+        <div onClick={() => setOpen(!open)}
+                aria-controls="example-collapse-text"
+                aria-expanded={open}>
+          <p ><FontAwesomeIcon icon={faCutlery} /> Nueva Orden</p>
         </div>
       </NavLeft>
       <Col lg={10}>
         <h2>Menú</h2>
-        {/* <p>{products}</p> */}
         <div className='products-container'>
           <ProductCard products={ products } setProducts={setProducts}></ProductCard>
-          {/* {products.map((product) => (
-            <div className='product'>
-              <h6 key={product.id + 'name'}>{product.name}</h6>
-              <p key={product.id + 'price'}>Precio: ${product.price}</p>
-            </div>
-          ))} */}
+          <Collapse in={open}>
+                <div id="example-collapse-text">
+                    {/* Nueva orden como componente */}
+                    Nueva orden
+                    <NewOrder products={ products }/>
+                </div>
+            </Collapse>
         </div>
       </Col>
 

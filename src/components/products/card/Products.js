@@ -1,11 +1,12 @@
+// import { AddInOrder } from "../AddInOrder/AddInOrder";
 import Counter from "../counter/Counter";
 
 
 const ProductCard = ({ products, setProducts }) => {
-    console.log(products)
+    // console.log(products)
 
     const returnCounter = (product, value) => {
-        console.log('value', value);
+        // console.log('value', value);
         // console.log('product', product)
         let productsClone = Object.assign([], products); // clon del estado para actualizar su información
         productsClone.forEach(element => {
@@ -14,9 +15,7 @@ const ProductCard = ({ products, setProducts }) => {
                 element.quantity = value; 
             }
         });
-        console.log('product', products)
         // actualizar el quantity del producto
-        
         setProducts(productsClone);
     }
 
@@ -25,7 +24,9 @@ const ProductCard = ({ products, setProducts }) => {
             <div className='product' key={product.id}>
                 <h6>{product.name}</h6>
                 <p>Precio: ${product.price}</p>
-                <Counter amount={product.quantity} retorno={(valor) => returnCounter(product, valor)}></Counter> 
+                <Counter amount={product.quantity} retorno={(valor) => returnCounter(product, valor)}></Counter>
+                <button>Agregar</button>
+                
             </div>
         ))
     )

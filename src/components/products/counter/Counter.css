@@ -1,0 +1,12 @@
+#products-card {
+    display: flex;
+}
+
+#products-card button {
+    all: unset;
+    background-color: #5AA02A;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}

@@ -1,6 +1,6 @@
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { PrivateRoute } from '../routers/PrivateRoute';
+import { PrivateRoute } from './PrivateRoute';
 import { LoginScreen } from '../components/login/LoginScreen';
 import { DashboardRoutes } from './DashboardRoutes';
 

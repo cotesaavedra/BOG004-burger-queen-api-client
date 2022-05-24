@@ -9,14 +9,17 @@ const Counter = ({amount, retorno}) => {
         retorno(amount + 1);
     };
     const handleSubtract = () => {
-        // setCounter( counter -1);
-        retorno(amount - 1)
+        if (amount <= 0){
+            retorno(amount)
+        } else {
+            retorno(amount - 1)
+        }
     }
     return (
         <div id='products-card'>
-            <button onClick={ handleAdd }>+</button>
+            <button onClick={ handleSubtract }>-</button>            
             <p>{ amount }</p>
-            <button onClick={ handleSubtract }>-</button>
+            <button onClick={ handleAdd }>+</button>
         </div>
     )
 

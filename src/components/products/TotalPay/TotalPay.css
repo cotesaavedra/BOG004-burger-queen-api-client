@@ -1,0 +1,21 @@
+#order-total {
+    background-color: #5AA02A;
+}
+#order-total h5 {
+    font-weight: 700;
+}
+#order-breakdown {
+    background-color: #575956;
+    color: white;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+#order-breakdown h6 {
+    font-weight: 300px;
+}
+.order-element {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}

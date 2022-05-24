@@ -24,4 +24,4 @@ const Counter = ({amount, retorno}) => {
     )
 
 }
-export default Counter;
+export default Counter

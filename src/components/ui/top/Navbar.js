@@ -42,7 +42,7 @@ export const Navbar = () => {
                         className={({ isActive }) => "nav-item nav-link " + (isActive ? 'active' : '')}
                         to="/waiter"
                     >
-                        Waiter
+                        Mesero
                     </NavLink>
                     }
                     {user.roles.admin &&
@@ -50,7 +50,7 @@ export const Navbar = () => {
                         className={({ isActive }) => "nav-item nav-link " + (isActive ? 'active' : '')}
                         to="/admin"
                     >
-                        Admin
+                        Administrador
                     </NavLink>
                     }
                     <div className='navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end'>

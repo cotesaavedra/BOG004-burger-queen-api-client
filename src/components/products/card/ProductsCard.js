@@ -1,6 +1,5 @@
-// import { AddInOrder } from "../AddInOrder/AddInOrder";
-import Counter from "../counter/Counter";
-
+import './ProductsCard.css';
+import Counter from "../Counter/Counter";
 
 const ProductCard = ({ products, setProducts }) => {
     // console.log(products)
@@ -18,15 +17,13 @@ const ProductCard = ({ products, setProducts }) => {
         // actualizar el quantity del producto
         setProducts(productsClone);
     }
-
+    
     return (
         products.map((product) => (
             <div className='product' key={product.id}>
                 <h6>{product.name}</h6>
-                <p>Precio: ${product.price}</p>
-                <Counter amount={product.quantity} retorno={(valor) => returnCounter(product, valor)}></Counter>
-                <button>Agregar</button>
-                
+                <p>${product.price}</p>
+                <Counter amount={product.quantity} retorno={(valor) => returnCounter(product, valor)}></Counter>                
             </div>
         ))
     )

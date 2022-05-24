@@ -1,0 +1,6 @@
+.col-auto .mb-2 {
+    width: 100%;
+}
+.form-control:focus {
+    border-color: #b3b3b3 !important;
+}

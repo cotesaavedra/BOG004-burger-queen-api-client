@@ -6,7 +6,7 @@ import { faCheck, faCutlery, faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../auth/authContext';
 import NewOrder from '../products/NewOrder/NewOrder';
 import Card from '../products/card/Card';
-import { NavLeft } from '../ui/left/NavLeft';
+import NavLeft  from '../ui/left/NavLeft';
 
 export const WaiterScreen = () => {
   const { user } = useContext(AuthContext);

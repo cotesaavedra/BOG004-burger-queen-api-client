@@ -3,14 +3,13 @@ import { Row, Col, Collapse } from 'react-bootstrap';
 import { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faCutlery, faBars } from '@fortawesome/free-solid-svg-icons';
-import { NavLeft } from '../ui/left/NavLeft';
 import { AuthContext } from '../../auth/authContext';
 import NewOrder from '../products/NewOrder/NewOrder';
-import ProductCard from '../products/card/ProductsCard';
+import Card from '../products/card/Card';
+import { NavLeft } from '../ui/left/NavLeft';
 
 export const WaiterScreen = () => {
   const { user } = useContext(AuthContext);
-
   const [products, setProducts] = useState([]);
   const [open, setOpen] = useState(false);
 
@@ -57,21 +56,19 @@ export const WaiterScreen = () => {
         </div>
         <div className='products-container'>
           <Col lg={7} id='column-product'>
-            <ProductCard products={products} setProducts={setProducts}></ProductCard>
+            <Card products={products} setProducts={setProducts}></Card>
           </Col>
-          <Col lg={4}>
+          <Col lg={5}>
             <Collapse id='nav-collapse' in={open}>
               <div id="example-collapse-text">
-                {/* Nueva orden como componente */}
-                <h5 className='comp-padding'>Nueva orden</h5>
-                <p className='comp-padding'><h6>usuario:</h6>{user.email}</p>
+                <h5 className='comp-padding collapse-h5'>Nueva orden</h5>
+                <p className='comp-padding'>usuario: {user.email}</p>
                 <NewOrder products={products} setProducts={setProducts} />
               </div>
             </Collapse>
           </Col>
         </div>
       </Col>
-
     </Row>
   )
 }

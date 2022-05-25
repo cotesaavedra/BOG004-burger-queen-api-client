@@ -2,10 +2,8 @@ import './NavLeft.css';
 import { Col } from 'react-bootstrap';
 
 
-export function NavLeft(props) {
-    
+const NavLeft = (props) => {
     return (
-    
         <Col lg='2'>
             <div id='cont-nav'>
             {/* nombre:{props.nombre} */}
@@ -15,7 +13,6 @@ export function NavLeft(props) {
             {/* LogOut */}
             </div>
         </Col>
-
     )
-  
 }
+export default NavLeft

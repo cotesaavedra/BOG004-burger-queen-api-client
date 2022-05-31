@@ -9,13 +9,14 @@ const Card = ({ products, setProducts }) => {
                 element.quantity = value; 
             }
         });
+        // console.log(productsClone)
         setProducts(productsClone);
     }
     
     return (
         products.map((product) => (
             <div className='product' key={product.id}>
-                <h6>{product.name}</h6>
+                <h6 data-testid = 'name'>{product.name}</h6>
                 <p>${product.price}</p>
                 <Counter amount={product.quantity} calculate={(value) => returnCounter(product, value)}></Counter>
             </div>

@@ -15,7 +15,7 @@ const Ordered = ({ products, setProducts }) => {
     }
 
     return (
-        <Table striped bordered hover>
+        <Table data-testid='table' striped bordered hover>
             <thead>
                 <tr>
                     <th>#</th>
@@ -35,7 +35,7 @@ const Ordered = ({ products, setProducts }) => {
                                     <td>{product.name}</td>
                                     <td>{product.quantity}</td>
                                     <td>${product.price}</td>
-                                    <td id={product.id+'Btn'} onClick={(e) => remove(e, product)}> <FontAwesomeIcon icon={faTrash} /></td>
+                                    <td data-testid='btn-remove' id={product.id+'Btn'} onClick={(e) => remove(e, product)}> <FontAwesomeIcon icon={faTrash} /></td>
                                 </>
                             }
                         </tr>

@@ -8,11 +8,9 @@ export function NavLeft(props) {
     
         <Col lg='2'>
             <div id='cont-nav'>
-            {/* nombre:{props.nombre} */}
             {
                 props.children
             }
-            {/* LogOut */}
             </div>
         </Col>
 

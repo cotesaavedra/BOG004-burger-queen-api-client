@@ -7,7 +7,6 @@ export const StopWatch = () => {
 
   return (
     <div className="app">
-      <h3>Stopwatch</h3>
       <div className='stopwatch-card'>
         <p>{formatTime(timer)}</p>
         <div className='buttons'>
@@ -19,7 +18,7 @@ export const StopWatch = () => {
                   <button onClick={handleResume}>Resume</button>
               )
           }
-          <button onClick={handleReset} disabled={!isActive}>Order list</button>
+          <button onClick={handleReset} disabled={!isActive}>Done</button>
         </div>
       </div>
     </div>

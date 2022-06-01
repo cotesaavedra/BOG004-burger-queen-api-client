@@ -9,17 +9,52 @@
   justify-content: end;
 
 }
-.btn-order {
-  all: unset;
+.stopwatch{
+  display: flex;
+  align-items: center;
+}
+
+ .order-head {
+   margin-left: 9px;
+ }
+
+ .buttons{
+ all: unset;
   background-color: #5AA02A;
   border-radius: 20px;
-  width: 5vw;
-  height:5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
   color:#fff;
-  margin-top: 10px;
+
+ }
+ @media (max-width: 760px) {
+  .row-container{
+      background-image: url('https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: 'Numans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+  }
+
+
+  .col-auto .mb-2 {
+      width: 200px;
+
+  }
+
+  .login_btn {
+      background-color: #5AA02A !important;
+      border-radius: 2px;
+      width: 100px;
+  }
+
+  a {
+      font-size: 12px;
+  }
+  .buttons{
+      padding: 0;
+  }
+
 }

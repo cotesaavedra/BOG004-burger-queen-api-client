@@ -35,13 +35,13 @@ export const WaiterScreen = () => {
   return (
     <Row id='row-container'>
       <NavLeft>
-        <div onClick={viewProduct} className='comp-menu'>
+        <div data-testid='btn-fetch' onClick={viewProduct} className='comp-menu'>
           <p><FontAwesomeIcon icon={faBars} /> Menú</p>
         </div>
         <div className='comp-menu'>
-          <p><FontAwesomeIcon icon={faCheck} /> Ordenes listas</p>
+          <p data-testid='orders-ready'><FontAwesomeIcon icon={faCheck} /> Ordenes listas</p>
         </div>
-        <div onClick={viewProduct}>
+        <div rol='button' onClick={viewProduct}>
           <div className='btn-component' onClick={() => setOpen(!open)}
             aria-controls="example-collapse-text"
             aria-expanded={open}>
@@ -60,7 +60,7 @@ export const WaiterScreen = () => {
           </Col>
           <Col lg={5}>
             <Collapse id='nav-collapse' in={open}>
-              <div id="example-collapse-text">
+              <div data-testid='collapse-div' id="example-collapse-text">
                 <h5 className='comp-padding collapse-h5'>Nueva orden</h5>
                 <p className='comp-padding'>usuario: {user.email}</p>
                 <NewOrder products={products} setProducts={setProducts} />

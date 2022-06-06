@@ -11,18 +11,18 @@ const TotalPay = ({ products }) => {
             <div id='order-breakdown'>
                 <div className='order-element'>
                     <h6>Subtotal:</h6>
-                    <h6>${total}</h6>
+                    <h6 data-testid='subtotal'>${total}</h6>
                 </div>
                 <hr className="solid"></hr>
                 <div className='order-element'>
                     <h6>Propina 10%:</h6>
-                    <h6>${total * 0.1}</h6>
+                    <h6 data-testid='tip'>${total * 0.1}</h6>
                 </div>
             </div>
             <div id='order-total'>
                 <div className='order-element'>
                     <h5>Total:</h5>
-                    <h5>${total + total * 0.1}</h5>
+                    <h5 data-testid='total'>${total + total * 0.1}</h5>
                 </div>
             </div>
         </>

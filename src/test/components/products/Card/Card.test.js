@@ -15,7 +15,6 @@ describe('Testeando el componente Card', () => {
                 'type': 'Desayuno'
             }
         ];
-        // const value = 1;
         render(<Card products={products} />)
         const name = screen.getByText('Sandwich de jamón y queso');
         expect(name).toBeInTheDocument();

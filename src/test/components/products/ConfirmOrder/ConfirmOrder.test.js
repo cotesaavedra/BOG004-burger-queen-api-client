@@ -5,7 +5,6 @@ import ConfirmOrder from "../../../../components/products/ConfirmOrder/ConfirmOr
 import { AuthContext } from '../../../../auth/authContext.js';
 import axios from 'axios';
 
-
 afterEach(cleanup);
 describe('Testeando el componente con la función de agregar nueva orden-boton', () => {
     const userMock = {};

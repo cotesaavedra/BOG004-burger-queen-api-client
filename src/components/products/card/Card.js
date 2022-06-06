@@ -15,7 +15,7 @@ const Card = ({ products, setProducts }) => {
     
     return (
         products.map((product) => (
-            <div className='product' key={product.id}>
+            <div data-testid='card-product' className='product' key={product.id}>
                 <h6 data-testid = 'name'>{product.name}</h6>
                 <p>${product.price}</p>
                 <Counter amount={product.quantity} calculate={(value) => returnCounter(product, value)}></Counter>

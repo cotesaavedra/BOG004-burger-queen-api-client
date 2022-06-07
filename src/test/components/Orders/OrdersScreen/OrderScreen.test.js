@@ -6,28 +6,29 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { OrdersScreen } from '../../../../components/Orders/OrdersScreen/OrdersScreen';
 import axios from 'axios';
 
-//     test('Renderiza el componente', async () => {
-//         const userMock = {
-//             email: 'leidy.hopper@systers.xyz',
-//         };
-//         axios.post.mockResolvedValueOnce({
-//             data: [{
-//                 client: 'Juanita',
-//                 id: 19,
-//                 products: products
-//             }],
-//         });
-//         render(
-//             <Router>
-//                 <AuthContext.Provider value={{
-//                     user: userMock,
-//                 }}>
-//                     <OrdersScreen />
-//                 </AuthContext.Provider>
-//             </Router>
-//         )
+describe('testeando componente OrdersScreen', () => {
+    test('Renderiza el componente', async () => {
+        const userMock = {
+            email: 'leidy.hopper@systers.xyz',
+        };
+        axios.post.mockResolvedValueOnce({
+            data: [{
+                client: 'Juanita',
+                id: 19,
+                products: products
+            }],
+        });
+        render(
+            <Router>
+                <AuthContext.Provider value={{
+                    user: userMock,
+                }}>
+                    <OrdersScreen />
+                </AuthContext.Provider>
+            </Router>
+        )
 
-//         const ordersReady = screen.getByTestId('table-orders');
-//         expect(ordersReady).toBeInTheDocument();
-//     })
-// })
+        const ordersReady = screen.getByTestId('table-orders');
+        expect(ordersReady).toBeInTheDocument();
+    })
+})

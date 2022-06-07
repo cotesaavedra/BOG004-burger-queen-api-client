@@ -1,34 +1,34 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Apiurl } from '../../../services/apirest';
 import axios from 'axios';
 import { AuthContext } from '../../../auth/authContext';
 
 
 
-export const Status = ({ orders, setOrders }) => {
+export const Status = ({ orders, setOrders, callOrders }) => {
     const { user } = useContext(AuthContext);
-    // let url = Apiurl + 'orders' + '/'+ {order.id}'
     // console.log(url)
     let token = user.token;
-
+    
     const changeToDelivered = (order) => {
-        let url = Apiurl + 'orders';
-        let data = {
-            status: 'delivered'
-        }
-        axios.patch(url, data, {
-            headers: {
-                'Authorization': `Bearer ${token}`
+            let id = order.id;
+            let url = `${Apiurl}orders/${id}`;
+            let data = {
+                status: 'delivered'
             }
-        })
-            .then(response => {
-                setOrders(response.data);
+            
+            axios.patch(url, data, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             })
-            .catch(error => {
-                console.log(error)
-            });
+                .then(response => {
+                    callOrders()
+                })
+                .catch(error => {
+                    console.log(error)
+                });
     }
-
 
     return (
         orders.map((order) => {
@@ -37,10 +37,13 @@ export const Status = ({ orders, setOrders }) => {
                     <td>{order.id}</td>
                     <td>{order.client}</td>
                     <td>
-                        {order.products.map((product => {
-                            return (<p key={product.product.id}>{product.product.name}</p>)
+                        {order.products.map((element => {
+                            return (
+                            <p key={element.product.id}>{element.qty} x {element.product.name}</p>
+                            )
                         }))}
                     </td>
+                    <td>{order.dataEntry}</td>
 
                     {order.status === 'pending' &&
                         <td>

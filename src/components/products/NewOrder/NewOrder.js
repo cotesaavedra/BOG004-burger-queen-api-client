@@ -29,13 +29,13 @@ const NewOrder = ({ products, setProducts }) => {
     const { handleSubmit } = useForm();
     
     return (
-        <Form onSubmit={handleSubmit(removeSubmit)}>
+        <Form data-testid='form' onSubmit={handleSubmit(removeSubmit)}>
             <Col xs="auto" className='comp-padding'>
                 <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
                     Cliente
                 </Form.Label>
                 <InputGroup className="mb-2">
-                    <FormControl type='text' className='form-control' name='Cliente' placeholder='Cliente' onChange={handleInputChange} />
+                    <FormControl data-testid='name-client' type='text' className='form-control' name='Cliente' placeholder='Cliente' onChange={handleInputChange} />
                 </InputGroup>
                 <Ordered products={products} setProducts={setProducts} />
             </Col>

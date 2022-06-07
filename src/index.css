@@ -35,3 +35,9 @@ code {
   text-align: center;
   margin-top: 50px;
 }
+.btn-rejected{
+  background-color: red;
+}
+/* .comp-menu:focus{
+  background-color: red !important;
+} */

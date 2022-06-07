@@ -4,10 +4,10 @@ import { AuthContext } from '../auth/authContext';
 import { AdminScreen } from '../components/adm/AdminScreen';
 import { ChefScreen } from '../components/chef/ChefScreen';
 import { LoginScreen } from '../components/login/LoginScreen';
+import { OrdersScreen } from '../components/Orders/OrdersScreen/OrdersScreen';
 import { Navbar } from '../components/ui/top/Navbar';
 import { WaiterScreen } from '../components/waiter/WaiterScreen';
 import { ProtectedRoute } from './ProtectedRoute';
-
 export const DashboardRoutes = () => {
   const { user } = useContext(AuthContext);
   return (
@@ -17,6 +17,11 @@ export const DashboardRoutes = () => {
         <Route path='/waiter' element={
           <ProtectedRoute isAllowed={user.roles.waiter}>
             <WaiterScreen />
+          </ProtectedRoute>}
+        />
+        <Route path='/waiter/orders' element={
+          <ProtectedRoute isAllowed={user.roles.waiter}>
+            <OrdersScreen />
           </ProtectedRoute>}
         />
         <Route path='/chef' element={

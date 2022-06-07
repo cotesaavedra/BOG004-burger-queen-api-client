@@ -17,8 +17,8 @@ const Counter = ({ amount, calculate }) => {
     return (
         <div id='products-card'>
             <button onClick={handleSubtract}><FontAwesomeIcon icon={faMinus} /></button>
-            <p>{amount}</p>
-            <button onClick={handleAdd}><FontAwesomeIcon icon={faPlus} /></button>
+            <p data-testid='counter'>{amount}</p>
+            <button data-testid='btn-add' onClick={handleAdd}><FontAwesomeIcon icon={faPlus} /></button>
         </div>
     )
 }

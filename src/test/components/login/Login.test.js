@@ -11,7 +11,7 @@ jest.mock("react-router-dom", () => ({
     useNavigate: () => mockUseNavigate,
 }));
 
-jest.mock('axios');
+// jest.mock('axios');
 
 
 const userMock = {};

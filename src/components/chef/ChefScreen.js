@@ -1,4 +1,4 @@
-import { Accordion, Col, Row, Table } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../auth/authContext';
 import { useEffect } from 'react';
@@ -7,11 +7,10 @@ import '../pendingOrders/PendingOrders.css'
 import { StopWatch } from '../stopwatch/Stopwatch';
 import PendingOrders from '../pendingOrders/PendingOrders';
 
-
-
 export const ChefScreen = () => {
   const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
+  const [OrderSelected, setOrderSelected] = useState();
   const [open, setOpen] = useState(false);
 
   const getOrders = () => {
@@ -37,32 +36,22 @@ export const ChefScreen = () => {
 
   return (
     <>
-      <Row id='row-container'>
-        <Accordion defaultActiveKey="0">
+      <Col log={2}>
+        {orders.map((order, index) => (
           <div>
-            {orders.map((order, index) => (
-              <Accordion.Item eventKey={index} key = {order.id}>
-                <Accordion.Header>
-                  <div>
-                    <span className='order-head'>{order.dataEntry}</span>
-                    <span className='order-head'>{order.client}</span>
-                    <span className='order-head'>{order.status}</span>
-                    <span className='stopwatch'><StopWatch /></span>
-                  </div>
-                </Accordion.Header>
-                <PendingOrders orders={orders}></PendingOrders>
-              </Accordion.Item>
-            ))}
+            <span className='order-head'>{order.dataEntry}</span>
+            <span className='order-head'>{order.client}</span>
+            <span className='order-head'>{order.status}</span>
+            <span className='stopwatch'><StopWatch /></span>
+            <button className='btn-component' onClick={() => setOpen(!open) = OrderSelected(!setOrderSelected)} >
+              Show more
+            </button>
           </div>
-        </Accordion>
-
-        <div>
-          <div className='btn-component' onClick={() => setOpen(!open)}
-            aria-controls="example-collapse-text"
-            aria-expanded={open}>
-          </div>
-        </div>
-      </Row>
+        ))}
+      </Col>
+      <Col log={10}>
+          <PendingOrders  />
+      </Col>
     </>
   )
 

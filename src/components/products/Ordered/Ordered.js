@@ -4,15 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const Ordered = ({ products, setProducts }) => {
-
     const remove = (e, product) => {
-        let orderedClone = Object.assign([], products); // clon del estado para actualizar su información
+        let orderedClone = Object.assign([], products);
         orderedClone.forEach(element => {
             if (product.id === element.id) {
                 element.quantity = 0; 
             }
         });
-        // actualizar el quantity del producto
         setProducts(orderedClone);
     }
 

@@ -15,12 +15,9 @@ export const LoginScreen = () => {
   const { register, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
-
   const [dataUser, setdataUser] = useState({
-
     email: '',
     password: ''
-
   })
 
   const handleInputChange = (event) => {
@@ -165,6 +162,3 @@ export const LoginScreen = () => {
     </div>
   );
 }
-
-
-

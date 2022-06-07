@@ -1,10 +1,11 @@
 import { Accordion, Col, Row, Table } from 'react-bootstrap';
-import { NavLeft } from '../ui/left/NavLeft';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../auth/authContext';
 import { useEffect } from 'react';
 import './ChefScreen.css';
+import '../pendingOrders/PendingOrders.css'
 import { StopWatch } from '../stopwatch/Stopwatch';
+import PendingOrders from '../pendingOrders/PendingOrders';
 
 
 
@@ -34,69 +35,33 @@ export const ChefScreen = () => {
     getOrders();
   }, [])
 
-
-
-
   return (
     <>
       <Row id='row-container'>
-        <Col lg="8">
-          <button className='comp-menu'>
-            PendingOrders
-          </button>
-
-          <Accordion defaultActiveKey="0">
-            <div>
-              {orders.map((order, index) => (
-                <Accordion.Item eventKey={index}>
-                  <Accordion.Header>
-                    <div>
-                      <span className='order-head'>{order.dataEntry}</span>
-                      <span className='order-head'>{order.client}</span>
-                      <span className='order-head'>{order.status}</span>
-                      <span className='stopwatch'><StopWatch /></span>
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <Table striped bordered hover>
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Image</th>
-                          <th>Type</th>
-                          <th>Name</th>
-                          <th>Quantity</th>
-                          <th>Price</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {order.products.map((product, index) => (
-                          <tr>
-                            <td>{index}</td>
-                            <td><img src={product.product.image} alt={product.product.name} /></td>
-                            <td>{product.product.type}</td>
-                            <td>{product.product.name}</td>
-                            <td>{product.qty}</td>
-                            <td>{product.product.price}</td>
-                          </tr>
-                        )
-                        )}
-                      </tbody>
-                    </Table>
-                  </Accordion.Body>
-                </Accordion.Item>
-              ))}
-            </div>
-          </Accordion>
-
-          <div className='comp-menu'>
-            <div className='btn-component' onClick={() => setOpen(!open)}
-              aria-controls="example-collapse-text"
-              aria-expanded={open}>
-            </div>
+        <Accordion defaultActiveKey="0">
+          <div>
+            {orders.map((order, index) => (
+              <Accordion.Item eventKey={index} key = {order.id}>
+                <Accordion.Header>
+                  <div>
+                    <span className='order-head'>{order.dataEntry}</span>
+                    <span className='order-head'>{order.client}</span>
+                    <span className='order-head'>{order.status}</span>
+                    <span className='stopwatch'><StopWatch /></span>
+                  </div>
+                </Accordion.Header>
+                <PendingOrders orders={orders}></PendingOrders>
+              </Accordion.Item>
+            ))}
           </div>
-        </Col>
+        </Accordion>
 
+        <div>
+          <div className='btn-component' onClick={() => setOpen(!open)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open}>
+          </div>
+        </div>
       </Row>
     </>
   )

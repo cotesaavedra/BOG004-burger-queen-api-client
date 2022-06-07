@@ -1,21 +1,17 @@
 import { InputGroup, Form, FormControl, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../../auth/authContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCutlery } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 import Ordered from '../Ordered/Ordered';
 import './NewOrder.css'
 import TotalPay from '../TotalPay/TotalPay';
+import ConfirmOrder from '../ConfirmOrder/ConfirmOrder';
 
 
 const NewOrder = ({ products, setProducts }) => {
-    const { user } = useContext(AuthContext);
-    // const userId = user.id;
     const [dataClient, setDataClient] = useState('')
 
-    const removeSubmit = (event) => {
-        event.preventDefault()
+    const removeSubmit = () => {
+        return false
     }
 
     const handleInputChange = (event) => {
@@ -46,9 +42,7 @@ const NewOrder = ({ products, setProducts }) => {
             {total > 0 &&
             <Col>
                 <TotalPay products={products} />
-                <div className='btn-component'>
-                <button className='global-btn'><FontAwesomeIcon icon={faCutlery} /> Confirmar</button>
-                </div>
+                <ConfirmOrder products={products} setProducts={setProducts} dataClient={dataClient}/>
             </Col>
             }
         </Form >

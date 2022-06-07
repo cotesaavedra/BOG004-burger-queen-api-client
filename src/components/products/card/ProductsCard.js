@@ -1,5 +1,6 @@
+import Counter from '../Counter/Counter.js';
 import './ProductsCard.css';
-import Counter from "../counter/Counter.js";
+
 
 const ProductCard = ({ products, setProducts }) => {
     // console.log(products)

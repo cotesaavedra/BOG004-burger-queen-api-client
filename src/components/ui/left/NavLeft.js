@@ -2,10 +2,8 @@ import './NavLeft.css';
 import { Col } from 'react-bootstrap';
 
 
-export function NavLeft(props) {
-    
+const NavLeft = (props) => {
     return (
-    
         <Col lg='2'>
             <div id='cont-nav'>
             {
@@ -13,7 +11,6 @@ export function NavLeft(props) {
             }
             </div>
         </Col>
-
     )
-  
 }
+export default NavLeft

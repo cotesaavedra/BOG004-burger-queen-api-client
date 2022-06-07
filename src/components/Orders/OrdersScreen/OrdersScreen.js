@@ -49,14 +49,14 @@ export const OrdersScreen = () => {
           </div>
         </Link>
         <Link to='/waiter/orders'>
-          <div className='comp-menu' id='orders-active' >
+          <div className='comp-menu' id='orders-active'>
             <p><FontAwesomeIcon icon={faCheck} /> Ordenes listas</p>
           </div>
         </Link>
       </NavLeft>
       <Col lg={10}>
         {loading ? '' : (
-          <Table data-testid='table-orders' responsive="sm">
+          <Table responsive="sm">
             <thead>
               <tr>
                 <th>Nº</th>
@@ -66,9 +66,9 @@ export const OrdersScreen = () => {
                 <th>Estado</th>
               </tr>
             </thead>
-            <tbody>
+            {/* <tbody> */}
               <Status orders={orders} setOrders={setOrders} callOrders={callOrders}></Status>
-            </tbody>
+            {/* </tbody> */}
           </Table>
         )}
       </Col>

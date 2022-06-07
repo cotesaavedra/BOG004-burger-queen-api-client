@@ -11,8 +11,9 @@
 }
 
 .comp-menu:hover {
-    background: #5AA02A;
+    background: #f2f2f2;
 }
+
 
 #title-menu {
     height: 5vh;
@@ -43,4 +44,7 @@ hr.solid {
 }
 .comp-padding {
     padding: 10px 10px;
+}
+#menu-active{
+    background-color: #5AA02A;
 }

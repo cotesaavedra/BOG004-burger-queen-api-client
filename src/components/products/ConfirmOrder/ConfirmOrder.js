@@ -37,7 +37,8 @@ const ConfirmOrder = ({ products, setProducts, dataClient }) => {
         const data = {
             userId: user.id,
             client: client,
-            products: orderedProducts
+            products: orderedProducts,
+            status: 'pending'
         };
         axios.post(url, data, {
             headers: {

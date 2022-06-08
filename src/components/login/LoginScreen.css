@@ -12,13 +12,13 @@
 
 }
 
-.card {
+.card-login {
     text-align: center;
     width: 400px;
     background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
-.card-body {
+.card-login-body {
     padding: 3rem !important;
 }
 
@@ -86,11 +86,11 @@ a {
 
     }
 
-    .card-body {
+    .card-login-body {
         padding: 1rem !important;
     }
 
-    .card {
+    .card-login {
         height: 310px;
         text-align: center;
         width: 300px;

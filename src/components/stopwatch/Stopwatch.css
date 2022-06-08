@@ -1,6 +1,18 @@
-.app {
+.stopwatch {
   display: flex;
-  justify-content: space-around;
-  height: 80vh;
-  padding-top: 10px;
+  align-items: center;
+  padding: 12px;
+}
+
+.btn-stopwatch {
+  background-color: #5AA02A;
+  color: #fff;
+  border-radius: 2px;
+  width: 100px;
+  border: none;
+  margin: 6px;
+}
+
+.btn-stopwatch:disabled{
+  background-color: #c0c3bf;
 }

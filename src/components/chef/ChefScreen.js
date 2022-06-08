@@ -1,17 +1,16 @@
-import { Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../auth/authContext';
 import { useEffect } from 'react';
 import './ChefScreen.css';
-import '../pendingOrders/PendingOrders.css'
-import { StopWatch } from '../stopwatch/Stopwatch';
-import PendingOrders from '../pendingOrders/PendingOrders';
+import PendingOrder from '../pendingOrder/PendingOrder';
+import { DetailOrder } from '../detailOrder/DetailOrder';
 
 export const ChefScreen = () => {
   const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
-  const [OrderSelected, setOrderSelected] = useState();
-  const [open, setOpen] = useState(false);
+  const [orderSelected, setOrderSelected] = useState();
+
 
   const getOrders = () => {
     fetch('http://localhost:8080/orders', {
@@ -35,24 +34,16 @@ export const ChefScreen = () => {
   }, [])
 
   return (
-    <>
-      <Col log={2}>
-        {orders.map((order, index) => (
-          <div>
-            <span className='order-head'>{order.dataEntry}</span>
-            <span className='order-head'>{order.client}</span>
-            <span className='order-head'>{order.status}</span>
-            <span className='stopwatch'><StopWatch /></span>
-            <button className='btn-component' onClick={() => setOpen(!open) = OrderSelected(!setOrderSelected)} >
-              Show more
-            </button>
-          </div>
+    <Row id='row-container'>
+      <Col lg={6}>
+        {orders.map((order) => (
+          <PendingOrder key={order.id} order={order} setOrderSelected={setOrderSelected} />
         ))}
       </Col>
-      <Col log={10}>
-          <PendingOrders  />
+      <Col lg={6}>
+        <DetailOrder order={orderSelected} />
       </Col>
-    </>
+    </Row>
   )
 
 };

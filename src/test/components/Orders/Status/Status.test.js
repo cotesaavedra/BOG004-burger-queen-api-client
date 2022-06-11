@@ -42,7 +42,7 @@ describe('testeando componente OrdersScreen', () => {
                         }
                     }
                 ],
-                'status': 'pending',
+                'status': 'delivering',
                 'dataEntry': '2022-03-05 15:00'
             }
         ]
@@ -58,7 +58,7 @@ describe('testeando componente OrdersScreen', () => {
                 </AuthContext.Provider>
             </Router>
         )
-        const btnStatus = screen.queryByTestId('btn-status-pending');
+        const btnStatus = screen.queryByTestId('btn-status-delivering');
         fireEvent.click(btnStatus)
         await waitFor(() => {
             expect(axios.patch).toHaveBeenCalledTimes(1);

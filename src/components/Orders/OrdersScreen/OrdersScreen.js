@@ -26,7 +26,7 @@ export const OrdersScreen = () => {
         }
       })
         .then(response => {
-          setOrders(response.data.reverse());
+          setOrders(response.data);
           setLoading(false);
         })
         .catch(error => {

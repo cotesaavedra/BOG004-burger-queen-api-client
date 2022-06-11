@@ -3,6 +3,7 @@ import { Apiurl } from '../../../services/apirest';
 import axios from 'axios';
 import { AuthContext } from '../../../auth/authContext';
 import { toast } from 'react-toastify';
+import './Status.css';
 
 export const Status = ({ orders, setOrders, callOrders }) => {
     const { user } = useContext(AuthContext);
@@ -12,13 +13,13 @@ export const Status = ({ orders, setOrders, callOrders }) => {
         let id = order.id;
         let url = `${Apiurl}orders/${id}`;
         let data = '';
-        if (order.status === 'pending') {
+        if (order.status === 'delivering') {
             data = {
                 status: 'delivered'
             }
         } else if (order.status === 'delivered') {
             data = {
-                status: 'pending'
+                status: 'delivering'
             }
         }
 
@@ -45,7 +46,8 @@ export const Status = ({ orders, setOrders, callOrders }) => {
     }
 
     return (
-        <tbody>
+        // <tbody>
+        <>
             {orders.map((order) => {
                 return (
                     <tr key={order.id} className='order'>
@@ -54,7 +56,7 @@ export const Status = ({ orders, setOrders, callOrders }) => {
                         <td>
                             {order.products.map((element => {
                                 return (
-                                    <p key={element.product.id}>{element.qty} x {element.product.name}</p>
+                                    <p key={element.product.id}>{element.qty}  ×  {element.product.name}</p>
                                 )
                             }))}
                         </td>
@@ -62,8 +64,15 @@ export const Status = ({ orders, setOrders, callOrders }) => {
     
                         {order.status === 'pending' &&
                             <td>
-                                <div data-testid='btn-status-pending' className='div-btn-status' onClick={(id) => changeToDelivered(order)}>
-                                    <button className='status-pending'>Pendiente</button>
+                                <div data-testid='btn-status-pending' className='div-btn-status'>
+                                    <button className='status-pending'>En cocina</button>
+                                </div>
+                            </td>
+                        }
+                        {order.status === 'delivering' &&
+                            <td>
+                                <div data-testid='btn-status-delivering' className='div-btn-status' onClick={(id) => changeToDelivered(order)}>
+                                    <button className='status-delivering'>A retirar</button>
                                 </div>
                             </td>
                         }
@@ -77,6 +86,7 @@ export const Status = ({ orders, setOrders, callOrders }) => {
                     </tr>
                 )
             })}
-        </tbody>
+        {/* </tbody> */}
+        </>
     )
 }

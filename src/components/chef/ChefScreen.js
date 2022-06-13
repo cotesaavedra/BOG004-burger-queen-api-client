@@ -37,7 +37,7 @@ export const ChefScreen = () => {
     <Row id='row-container'>
       <Col lg={6}>
         {orders.map((order) => (
-          <PendingOrder key={order.id} order={order} setOrderSelected={setOrderSelected} />
+          <PendingOrder key={order.id} order={order} setOrderSelected={setOrderSelected} getOrders={getOrders}/>
         ))}
       </Col>
       <Col lg={6}>

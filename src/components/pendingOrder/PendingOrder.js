@@ -4,7 +4,7 @@ import { StopWatch } from '../stopwatch/Stopwatch';
 import { Card, Button } from 'react-bootstrap';
 
 
-const PendingOrder = ({ order, setOrderSelected }) => {
+const PendingOrder = ({ order, setOrderSelected, getOrders}) => {
   const [pendingOrder, setPendingOrder] = useState(order);
   useEffect(() => {
     console.log(order);
@@ -15,7 +15,7 @@ const PendingOrder = ({ order, setOrderSelected }) => {
     <Card>
       <Card.Header >
         <div className='d-flex justify-content-between align-items-center'>
-          <h5>Order {pendingOrder.id}</h5>
+          <h5>Order {order.id}</h5>
           <span >
             Status: <span className={pendingOrder.status === 'pending' ? 'status-pending p-2' : 'status-delivered p-2'}>{pendingOrder.status}</span>
           </span>
@@ -29,8 +29,8 @@ const PendingOrder = ({ order, setOrderSelected }) => {
 
         </div>
         <div className={pendingOrder.status === 'pending' ? 'd-flex justify-content-between align-items-center' : 'd-flex justify-content-end align-items-center'}>
-          {pendingOrder.status === 'pending' && <StopWatch order={pendingOrder} />}
-          <Button class="btn-show-detail" variant="primary" onClick={() => setOrderSelected(pendingOrder)}>Show detail</Button>
+          {pendingOrder.status === 'pending' && <StopWatch order={pendingOrder} getOrders={getOrders} />}
+          <Button data-testid ='btn-show-detail' className='btn-show-detail' variant='primary' onClick={() => setOrderSelected(pendingOrder)}>Show detail</Button>
         </div>
 
       </Card.Body>

@@ -1,12 +1,14 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useState, } from 'react';
 import { Apiurl } from '../../../services/apirest';
 import axios from 'axios';
 import { AuthContext } from '../../../auth/authContext';
+import '../../waiter/WaiterScreen.js';
 
 
 
 export const Status = ({ orders, setOrders }) => {
     const { user } = useContext(AuthContext);
+    const [pendingOrder, setOrderSelected] = useState();
     // let url = Apiurl + 'orders' + '/'+ {order.id}'
     // console.log(url)
     let token = user.token;
@@ -28,8 +30,7 @@ export const Status = ({ orders, setOrders }) => {
                 console.log(error)
             });
     }
-
-
+   
     return (
         orders.map((order) => {
             return (
@@ -52,7 +53,7 @@ export const Status = ({ orders, setOrders }) => {
                     {order.status === 'delivered' &&
                         <td>
                             <div className='div-btn-status'>
-                                <button className='status-delivered'>Entregado</button>
+                                <button className='status-delivered' variant="primary" onClick={() => setOrderSelected(pendingOrder)}>Entregado</button>
                             </div>
                         </td>
                     }

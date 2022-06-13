@@ -30,7 +30,7 @@ const PendingOrder = ({ order, setOrderSelected }) => {
         </div>
         <div className={pendingOrder.status === 'pending' ? 'd-flex justify-content-between align-items-center' : 'd-flex justify-content-end align-items-center'}>
           {pendingOrder.status === 'pending' && <StopWatch order={pendingOrder} />}
-          <Button variant="primary" onClick={() => setOrderSelected(pendingOrder)}>Show detail</Button>
+          <Button class="btn-show-detail" variant="primary" onClick={() => setOrderSelected(pendingOrder)}>Show detail</Button>
         </div>
 
       </Card.Body>

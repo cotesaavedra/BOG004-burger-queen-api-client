@@ -5,8 +5,8 @@ import './Stopwatch.css'
 
 
 export const StopWatch = ({ order }) => {
+  console.log(useTimer);
   const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0);
-
   const handleDone = () => {
     const dateProcessed = new Date(order.dataEntry);
     dateProcessed.setSeconds(timer);
@@ -14,7 +14,6 @@ export const StopWatch = ({ order }) => {
     const seconds = `0${(dateProcessed.getSeconds() % 60)}`.slice(-2);
     order.dateProcessed = `${dateProcessed.getFullYear()}-${dateProcessed.getMonth() + 1}-${dateProcessed.getDate()} ${dateProcessed.getHours()}:${minutes}:${seconds}`;
     order.status = 'delivered';
-    console.log(order);
     handleReset();
   }
 

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor, getDefaultNormalizer } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoginScreen } from "../../../components/login/LoginScreen.js";
 import { AuthContext } from "../../../auth/authContext.js";
@@ -11,7 +11,12 @@ jest.mock("react-router-dom", () => ({
     useNavigate: () => mockUseNavigate,
 }));
 
-// jest.mock('axios');
+jest.mock('axios', () => {
+    return Object.assign(jest.fn(), {
+        get: jest.fn(),
+        post: jest.fn(),
+    });
+});
 
 
 const userMock = {};
@@ -113,11 +118,11 @@ describe('Tests LoginScreen', () => {
             </AuthContext.Provider>
         );
         fireEvent.change(
-             screen.getByPlaceholderText('Email'),
-             {target: {value: 'email'}},
+            screen.getByPlaceholderText('Email'),
+            { target: { value: 'email' } },
         )
         await waitFor(() => {
             expect(screen.getByPlaceholderText('Email').value).toBe('email');
         });
-        });
     });
+});

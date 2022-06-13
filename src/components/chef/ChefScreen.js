@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import './ChefScreen.css';
 import PendingOrder from '../pendingOrder/PendingOrder';
 import { DetailOrder } from '../detailOrder/DetailOrder';
+import axios from 'axios';
+import { Apiurl } from '../../services/apirest';
 
 export const ChefScreen = () => {
   const { user } = useContext(AuthContext);
@@ -13,18 +15,16 @@ export const ChefScreen = () => {
 
 
   const getOrders = () => {
-    fetch('http://localhost:8080/orders', {
-      method: 'GET', // or 'PUT'
+    let url = Apiurl + 'orders';
+    axios.get(url, {
       headers: {
-        'Content-Type': 'application/json',
-        'authorization': 'Bearer ' + user.token
+        'Authorization': `Bearer ${user.token}`
       }
     })
-      .then(response => response.json())
-      .then(data => {
+      .then(({ data }) => {
         if (typeof data === 'object' && data.length > 0) {
-          console.log(data);
           setOrders(data);
+
         }
       });
   };

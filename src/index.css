@@ -38,6 +38,14 @@ code {
 .btn-rejected{
   background-color: red;
 }
-/* .comp-menu:focus{
-  background-color: red !important;
-} */
+.btn-cancel{
+  background-color: #8d8d8d;
+  color: white;
+  width: 100px;
+}
+.error-message {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: red;
+}

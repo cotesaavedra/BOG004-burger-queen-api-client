@@ -67,12 +67,6 @@ a {
     justify-content: center;
 }
 
-.error-message {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: #3b3b3b;
-}
 @media (max-width: 760px) {
     #cont-login {
         background-image: url('https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');

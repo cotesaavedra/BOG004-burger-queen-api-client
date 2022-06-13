@@ -30,15 +30,7 @@ export const Status = ({ orders, setOrders, callOrders }) => {
         })
             .then(response => {
                 callOrders()
-                toast.success('Cambio realizado!', {
-                    position: 'top-center',
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    });
+                toast.success('Cambio realizado!');
             })
             .catch(error => {
                 console.log(error)

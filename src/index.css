@@ -49,3 +49,8 @@ code {
   font-weight: 600;
   color: red;
 }
+.comp-menu p{
+  text-decoration: none !important;
+  color: #000000 !important;
+  font-weight: 600;
+}

@@ -5,8 +5,6 @@ import { EditUser } from '../EditUser/EditUser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-
-
 export const ViewUsers = ({ users, setUsers, callUsers}) => {
     return (
         <>
@@ -14,7 +12,7 @@ export const ViewUsers = ({ users, setUsers, callUsers}) => {
                 <thead>
                     <tr>
                         <th>Nº</th>
-                        <th>Email</th>
+                        <th data-testid='user-email'>Email</th>
                         <th>Rol</th>
                         <th></th>
                         <th></th>

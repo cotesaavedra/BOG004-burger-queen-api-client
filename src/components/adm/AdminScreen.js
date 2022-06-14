@@ -9,6 +9,7 @@ import { Apiurl } from '../../services/apirest';
 import { AuthContext } from '../../auth/authContext';
 import axios from 'axios';
 import { ViewUsers } from '../Users/ViewUsers/ViewUsers';
+import { toast } from 'react-toastify';
 
 
 export const AdminScreen = () => {
@@ -29,7 +30,7 @@ export const AdminScreen = () => {
           setUsers(response.data)
         })
         .catch(error => {
-          console.log('rejected');
+          toast.error('Error de conexión!');
         })
     },
     [url, token],

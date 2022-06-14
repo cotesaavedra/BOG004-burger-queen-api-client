@@ -8,7 +8,6 @@ import axios from 'axios';
 import { AuthContext } from '../../../auth/authContext';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import './EditUser.css';
 
 export const EditUser = ({ userToEdit, callUsers }) => {
   const { user } = useContext(AuthContext);
@@ -64,16 +63,17 @@ export const EditUser = ({ userToEdit, callUsers }) => {
   }, [userToEdit.email, userToEdit.roles, setValue]);
   return (
     <>
-      <FontAwesomeIcon icon={faPencil} onClick={handleShow} />
-      <Modal show={show} onHide={handleClose}>
-        <form onSubmit={handleSubmit((data) => handleUpdate(data))}>
+      <FontAwesomeIcon data-testid='icon-edit' icon={faPencil} onClick={handleShow} />
+      <Modal data-testid='modal' show={show} onHide={handleClose}>
+        <form data-testid='form' onSubmit={handleSubmit((data) => handleUpdate(data))}>
           <Modal.Header closeButton>
             <Modal.Title>Editar Usuario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-              <Form.Label>Email</Form.Label>
+              <Form.Label >Email</Form.Label>
               <Form.Control
+              data-testid='email'
                 type='email'
                 name='email'
                 placeholder='name@systers.xyz'
@@ -89,7 +89,7 @@ export const EditUser = ({ userToEdit, callUsers }) => {
                   }
                 })}
               />
-               {errors.email && <p className='error-message'>{errors.email.message}</p>}
+              {errors.email && <p className='error-message'>{errors.email.message}</p>}
             </Form.Group>
             <Form.Group className='mb-3' controlId='exampleForm.ControlInput2'>
               <Form.Label>Rol</Form.Label>
@@ -127,7 +127,7 @@ export const EditUser = ({ userToEdit, callUsers }) => {
           </Modal.Body>
           <Modal.Footer>
             <button className='global-btn btn-cancel' onClick={handleClose}> Cancelar</button>
-            <button className='global-btn' type='submit'><FontAwesomeIcon icon={faCheck} /> Actualizar</button>
+            <button data-testid='submit' className='global-btn' type='submit'><FontAwesomeIcon icon={faCheck} /> Actualizar</button>
           </Modal.Footer>
         </form>
       </Modal>

@@ -1,13 +1,23 @@
-.navbar-collapse{
+.navbar-collapse {
     justify-content: end;
 }
+
 .navbar-brand img {
     width: 50px;
     filter: invert(100%);
     padding: 0px 5px;
-  }
-  .navbar {
-      padding-top: 0rem !important;
-      padding-bottom: 0rem !important;
-      height: 10vh;
-  }
+}
+
+.navbar {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    height: 10vh;
+}
+.navbar button {
+    color: rgba(255,255,255,.75);
+    font-weight: 700;
+}
+.navbar a {
+    color: rgba(255,255,255,.75) !important;
+    font-weight: 700;
+}

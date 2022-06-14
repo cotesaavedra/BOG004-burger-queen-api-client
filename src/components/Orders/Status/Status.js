@@ -33,12 +33,12 @@ export const Status = ({ orders, setOrders, callOrders }) => {
                 toast.success('Cambio realizado!');
             })
             .catch(error => {
-                console.log(error)
+                toast.error('Error de conexión!');
             });
     }
 
     return (
-        // <tbody>
+        <tbody>
         <>
             {orders.map((order) => {
                 return (
@@ -78,7 +78,7 @@ export const Status = ({ orders, setOrders, callOrders }) => {
                     </tr>
                 )
             })}
-        {/* </tbody> */}
         </>
+        </tbody>
     )
 }

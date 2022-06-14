@@ -1,12 +1,8 @@
-a{
-    text-decoration: none !important;
-    color: #000000 !important;
-    font-weight: 600;
-  }
-#orders-active{
+#orders-active {
     background-color: #5AA02A;
 }
-#menu-active{
+
+#menu-active {
     background-color: white;
 }
 

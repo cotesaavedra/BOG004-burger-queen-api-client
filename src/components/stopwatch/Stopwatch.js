@@ -5,7 +5,7 @@ import { Apiurl } from '../../services/apirest';
 import { formatTime } from '../../utils';
 import './Stopwatch.css'
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 
 
 export const StopWatch = ({ order, getOrders }) => {
@@ -13,7 +13,7 @@ export const StopWatch = ({ order, getOrders }) => {
   let token = user.token;
 
 
-  console.log(order);
+ 
   const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0);
   const handleDone = () => {
     const dateProcessed = new Date(order.dataEntry);
@@ -26,6 +26,7 @@ export const StopWatch = ({ order, getOrders }) => {
     let url = `${Apiurl}orders/${id}`;
     let status = { status: 'delivering' };
     axios.patch(url, status,
+
       {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -35,10 +36,11 @@ export const StopWatch = ({ order, getOrders }) => {
     )
 
     .then(response => {
+    
       getOrders();
   })
   .catch(error => {
-      
+    toast.error('ups no se actualizo');
   });
 
 

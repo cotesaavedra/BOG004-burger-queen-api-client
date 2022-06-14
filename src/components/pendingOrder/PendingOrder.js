@@ -1,13 +1,13 @@
 import './PendingOrder.css';
 import React, { useEffect, useState } from 'react';
 import { StopWatch } from '../stopwatch/Stopwatch';
-import { Card, Button } from 'react-bootstrap';
+import { Card, } from 'react-bootstrap';
 
 
 const PendingOrder = ({ order, setOrderSelected, getOrders}) => {
   const [pendingOrder, setPendingOrder] = useState(order);
   useEffect(() => {
-    console.log(order);
+   
     setPendingOrder(order);
   }, [order])
 
@@ -30,7 +30,7 @@ const PendingOrder = ({ order, setOrderSelected, getOrders}) => {
         </div>
         <div className={pendingOrder.status === 'pending' ? 'd-flex justify-content-between align-items-center' : 'd-flex justify-content-end align-items-center'}>
           {pendingOrder.status === 'pending' && <StopWatch order={pendingOrder} getOrders={getOrders} />}
-          <Button data-testid ='btn-show-detail' className='btn-show-detail' variant='primary' onClick={() => setOrderSelected(pendingOrder)}>Show detail</Button>
+          <button data-testid ='btn-show-detail' className='global-btn' onClick={() => setOrderSelected(pendingOrder)}>Ver Detalle</button>
         </div>
 
       </Card.Body>

@@ -9,26 +9,7 @@ a{
 #menu-active{
     background-color: white;
 }
-.status-pending{
-    width: 100px;
-    padding: 3px 0px;
-    border-radius: 20px;
-    border: 0px;
-    background-color: #ff000066;
-    color: #a91f1f;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-.status-delivered{
-    width: 100px;
-    padding: 3px 0px;
-    border-radius: 20px;
-    border: 0px;
-    background-color: #40a85a66;
-    color: #20933c;
-    font-weight: 600;
-    text-transform: capitalize;
-}
+
 .table-responsive-sm {
     padding: 20px;
 }

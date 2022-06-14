@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import axios from 'axios';
 import { Apiurl } from '../../../services/apirest';
 import { AuthContext } from '../../../auth/authContext';
@@ -17,21 +17,27 @@ export const OrdersScreen = () => {
   let url = Apiurl + 'orders';
   let token = user.token;
 
-  useEffect(() => {
-    setLoading(true);
-    axios.get(url, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        setOrders(response.data);
-        setLoading(false);
+  const callOrders = useCallback(
+    () => {
+      setLoading(true);
+      axios.get(url, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       })
-      .catch(error => {
-        console.log(error)
-      });
-  }, [])
+        .then(response => {
+          setOrders(response.data);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.log(error)
+        });
+    },
+    [token, url],
+  );
+  useEffect(() => {
+    callOrders()
+  }, [callOrders])
 
 
   return (
@@ -43,25 +49,26 @@ export const OrdersScreen = () => {
           </div>
         </Link>
         <Link to='/waiter/orders'>
-          <div className='comp-menu' id='orders-active' >
+          <div className='comp-menu' id='orders-active'>
             <p><FontAwesomeIcon icon={faCheck} /> Ordenes listas</p>
           </div>
         </Link>
       </NavLeft>
       <Col lg={10}>
         {loading ? '' : (
-          <Table data-testid='table-orders' responsive="sm">
+          <Table responsive="sm">
             <thead>
               <tr>
-                <th>Nº de Orden</th>
+                <th>Nº</th>
                 <th>Cliente</th>
                 <th>Detalle</th>
+                <th>Ingreso</th>
                 <th>Estado</th>
               </tr>
             </thead>
-            <tbody>
-              <Status orders={orders} setOrders={setOrders}></Status>
-            </tbody>
+            {/* <tbody> */}
+              <Status orders={orders} setOrders={setOrders} callOrders={callOrders}></Status>
+            {/* </tbody> */}
           </Table>
         )}
       </Col>

@@ -10,13 +10,26 @@ import { Spinner } from 'react-bootstrap';
 const ConfirmOrder = ({ products, setProducts, dataClient }) => {
     const { user } = useContext(AuthContext);
     const [status, setStatus] = useState('wait');
+    let url = Apiurl + 'orders';
+    let token = user.token;
+    let client = Object.values(dataClient).toString();
+    let date = new Date();
+    let days = date.toISOString().split('T')[0];
+    let hours = date.getHours().toString();
+    let minutes = date.getMinutes().toString();
+    if (hours.length === 1) {
+        hours = "0" + hours;
+    } else if (minutes.length === 1) {
+        minutes = "0" + minutes;
+    }
+    let dataEntry = `${days} ${hours}:${minutes}`
 
     const orderedProducts = [];
     products.forEach(product => {
         if (product.quantity > 0) {
             orderedProducts.push(
                 {
-                    qyt: product.quantity,
+                    qty: product.quantity,
                     product: {
                         id: product.id,
                         name: product.name,
@@ -31,14 +44,13 @@ const ConfirmOrder = ({ products, setProducts, dataClient }) => {
     });
 
     const addToApi = () => {
-        let url = Apiurl + 'orders';
-        let token = user.token;
-        let client = Object.values(dataClient).toString();
+
         const data = {
             userId: user.id,
             client: client,
             products: orderedProducts,
-            status: 'pending'
+            status: 'pending',
+            dataEntry: dataEntry
         };
         axios.post(url, data, {
             headers: {

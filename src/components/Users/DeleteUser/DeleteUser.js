@@ -12,7 +12,7 @@ export const DeleteUser = ({userToDelete, callUsers}) => {
   const { user } = useContext(AuthContext);
   const token = user.token;
 
-  const url = `${Apiurl}users/${user.id}`;
+  const url = `${Apiurl}users/${userToDelete.id}`;
   const [modalDelete, setmodalDelete] = useState(false);
   const handleClose = () => {
     setmodalDelete(false)

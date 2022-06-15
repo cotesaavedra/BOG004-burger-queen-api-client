@@ -9,6 +9,7 @@ import { Apiurl } from '../../services/apirest';
 import { AuthContext } from '../../auth/authContext';
 import axios from 'axios';
 import { ViewUsers } from '../Users/ViewUsers/ViewUsers';
+import { CreateUser } from '../Users/createUser/CreateUser';
 
 
 export const AdminScreen = () => {
@@ -55,11 +56,12 @@ export const AdminScreen = () => {
           <div className='btn-component' onClick={() => setOpen(!open)}
             aria-controls="example-collapse-text"
             aria-expanded={open}>
-            <button className='global-btn'><FontAwesomeIcon icon={faPlus} /> Nuevo Trabajador</button>
+            <CreateUser callUsers={callUsers}></CreateUser>
           </div>
         </div>
       </NavLeft>
       <Col lg={10}>
+
         <ViewUsers users={users} setUsers={setUsers} callUsers={callUsers} />
       </Col>
     </Row>

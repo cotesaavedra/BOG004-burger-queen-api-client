@@ -2,8 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap';
 import { DeleteUser } from '../DeleteUser/DeleteUser';
 import { EditUser } from '../EditUser/EditUser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 export const ViewUsers = ({ users, setUsers, callUsers}) => {
     return (
@@ -34,7 +33,7 @@ export const ViewUsers = ({ users, setUsers, callUsers}) => {
                                     <td>Chef</td>
                                 }
                                  <td><EditUser userToEdit={user} callUsers={callUsers} /></td>
-                                 <td><FontAwesomeIcon icon={faTrash} /><DeleteUser users={users} setUsers={setUsers} /></td>
+                                 <td><DeleteUser userToDelete={user} callUsers={callUsers} /></td>
                                  
                             </tr>
                         )

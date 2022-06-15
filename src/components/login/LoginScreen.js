@@ -10,6 +10,7 @@ import { InputGroup, Form, FormControl, Button, Row, Col } from 'react-bootstrap
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 export const LoginScreen = () => {
   const { register, formState: { errors } } = useForm();
@@ -56,7 +57,7 @@ export const LoginScreen = () => {
         }
       })
       .catch(error => {
-        console.log(error);
+        toast.error('Usuario o/y Contraseña Incorrecta');
       })
   }
 
@@ -64,11 +65,11 @@ export const LoginScreen = () => {
     <div id='cont-login'>
       <div className='container'>
         <div className='d-flex justify-content-center h-100'>
-          <div className='card'>
-            <div className='card-header'>
+          <div className='card-login'>
+            <div className='card-login-header'>
               <img id='logo' src={logo} alt='logo' />
             </div>
-            <div className='card-body'>
+            <div className='card-login-body'>
               <Form onSubmit={(event) => {
                 event.preventDefault()
               }}>

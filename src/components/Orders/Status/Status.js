@@ -5,6 +5,7 @@ import { AuthContext } from '../../../auth/authContext';
 import { toast } from 'react-toastify';
 import './Status.css';
 
+
 export const Status = ({ orders, setOrders, callOrders }) => {
     const { user } = useContext(AuthContext);
     let token = user.token;
@@ -36,7 +37,6 @@ export const Status = ({ orders, setOrders, callOrders }) => {
                 toast.error('Error de conexión!');
             });
     }
-
     return (
         <tbody>
         <>

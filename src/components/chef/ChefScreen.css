@@ -1,0 +1,39 @@
+*{
+  padding: 0;
+  margin:0;
+}
+
+
+#btn-chef{
+  display: flex;
+  justify-content: end;
+
+}
+
+
+ .order-head {
+   margin-left: 9px;
+ }
+
+ .buttons{
+ all: unset;
+  background-color: #5AA02A;
+  border-radius: 20px;
+  color:#fff;
+
+ }
+ @media (max-width: 760px) {
+  #row-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+  }
+  
+  
+  .buttons{
+      padding: 0;
+  }
+
+ }

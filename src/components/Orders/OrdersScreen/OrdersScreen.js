@@ -9,6 +9,7 @@ import NavLeft from '../../ui/left/NavLeft';
 import { Link } from 'react-router-dom';
 import './OrdersScreen.css'
 import { Status } from '../Status/Status';
+import { toast } from 'react-toastify';
 
 export const OrdersScreen = () => {
   const { user } = useContext(AuthContext);
@@ -30,7 +31,7 @@ export const OrdersScreen = () => {
           setLoading(false);
         })
         .catch(error => {
-          console.log(error)
+          toast.error('Error de conexión!');
         });
     },
     [token, url],

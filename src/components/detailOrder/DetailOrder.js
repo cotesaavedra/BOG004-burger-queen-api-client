@@ -5,15 +5,15 @@ export const DetailOrder = ({ order }) => {
 
   return (
     <div className='p-2'>
-      <h3>Detail order: {order && order.id}</h3>
+      <h3>Detalle De La Orden: {order && order.id}</h3>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th>Nº</th>
+            <th>tipo</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
           </tr>
         </thead>
         <tbody>

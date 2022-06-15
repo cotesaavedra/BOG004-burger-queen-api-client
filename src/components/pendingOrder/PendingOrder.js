@@ -15,16 +15,16 @@ const PendingOrder = ({ order, setOrderSelected, getOrders}) => {
     <Card>
       <Card.Header >
         <div className='d-flex justify-content-between align-items-center'>
-          <h5>Order {order.id}</h5>
+          <h5>Orden {order.id}</h5>
           <span >
-            Status: <span className={pendingOrder.status === 'pending' ? 'status-pending p-2' : 'status-delivered p-2'}>{pendingOrder.status}</span>
+            Estado: <span className={pendingOrder.status === 'pending' ? 'status-pending p-2' : 'status-delivered p-2'}>{pendingOrder.status}</span>
           </span>
         </div>
       </Card.Header>
       <Card.Body>
         <div>
           <div>Date entry: {pendingOrder.dataEntry}</div>
-          {pendingOrder.status === 'delivered' && <div>Date processed: {pendingOrder.dateProcessed}</div>}
+          {pendingOrder.status === 'delivered' && <div>Feche de procesamiento: {pendingOrder.dateProcessed}</div>}
           <div>Client: {pendingOrder.client}</div>
 
         </div>

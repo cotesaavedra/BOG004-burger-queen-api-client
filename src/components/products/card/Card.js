@@ -9,7 +9,6 @@ const Card = ({ products, setProducts }) => {
                 element.quantity = value; 
             }
         });
-        // console.log(productsClone)
         setProducts(productsClone);
     }
     

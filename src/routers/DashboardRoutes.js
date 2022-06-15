@@ -5,7 +5,7 @@ import { AdminScreen } from '../components/adm/AdminScreen';
 import { ChefScreen } from '../components/chef/ChefScreen';
 import { LoginScreen } from '../components/login/LoginScreen';
 import { OrdersScreen } from '../components/Orders/OrdersScreen/OrdersScreen';
-import { EditProducts } from '../components/products/EditProducts/EditProducts';
+import { ViewProducts } from '../components/products/ViewProducts/ViewProducts';
 import { Navbar } from '../components/ui/top/Navbar';
 import { WaiterScreen } from '../components/waiter/WaiterScreen';
 import { ProtectedRoute } from './ProtectedRoute';
@@ -38,7 +38,7 @@ export const DashboardRoutes = () => {
         />
         <Route path='/admin/products' element={
           <ProtectedRoute isAllowed={user.roles.admin}>
-            <EditProducts />
+            <ViewProducts />
           </ProtectedRoute>}
         />
         <Route

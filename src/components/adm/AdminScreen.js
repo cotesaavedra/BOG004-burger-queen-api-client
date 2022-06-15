@@ -2,13 +2,14 @@ import './AdminScreen.css';
 import { Row, Col } from 'react-bootstrap';
 import { useContext, useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faPlus, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import NavLeft from '../ui/left/NavLeft';
 import { Apiurl } from '../../services/apirest';
 import { AuthContext } from '../../auth/authContext';
 import axios from 'axios';
 import { ViewUsers } from '../Users/ViewUsers/ViewUsers';
+import { toast } from 'react-toastify';
 import { CreateUser } from '../Users/createUser/CreateUser';
 
 
@@ -30,7 +31,7 @@ export const AdminScreen = () => {
           setUsers(response.data)
         })
         .catch(error => {
-          console.log('rejected');
+          toast.error('Error de conexión!');
         })
     },
     [url, token],

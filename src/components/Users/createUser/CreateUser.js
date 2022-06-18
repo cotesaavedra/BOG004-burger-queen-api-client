@@ -24,7 +24,6 @@ export const CreateUser = ({ callUsers }) => {
   }
 
   const userCreaterForm = (info) => {
-    console.log('submit')
     setmodalcreate(true);
     let rol = {};
     if (info.rol === 'admin') {
@@ -48,7 +47,6 @@ export const CreateUser = ({ callUsers }) => {
       setmodalcreate(false);
       callUsers();
     }).catch(error => {
-      console.log(error);
       toast.error('Error el usuario no fue creado');
     });
   };

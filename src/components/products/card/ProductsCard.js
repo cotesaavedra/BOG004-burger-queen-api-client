@@ -3,14 +3,10 @@ import './ProductsCard.css';
 
 
 const ProductCard = ({ products, setProducts }) => {
-    // console.log(products)
 
     const returnCounter = (product, value) => {
-        // console.log('value', value);
-        // console.log('product', product)
         let productsClone = Object.assign([], products); // clon del estado para actualizar su información
         productsClone.forEach(element => {
-            // console.log('cantidad', element.quantity)
             if (element.id === product.id){
                 element.quantity = value; 
             }

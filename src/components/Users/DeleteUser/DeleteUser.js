@@ -23,7 +23,6 @@ export const DeleteUser = ({userToDelete, callUsers}) => {
   };
 
   const handleDelete = () => {
-    console.log('handleDelete()', 'hola')
     axios.delete(url, {
       headers: {
         'Authorization': `Bearer ${token}`

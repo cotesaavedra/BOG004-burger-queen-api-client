@@ -13,7 +13,6 @@ export const StopWatch = ({ order, getOrders }) => {
   let token = user.token;
 
   const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0);
-  console.log(isActive, isPaused, handleStart);
   const handleDone = () => {
     const dateProcessed = new Date(order.dataEntry);
     dateProcessed.setSeconds(timer);

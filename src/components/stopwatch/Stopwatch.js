@@ -12,9 +12,8 @@ export const StopWatch = ({ order, getOrders }) => {
   const { user } = useContext(AuthContext);
   let token = user.token;
 
-
- 
   const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0);
+  console.log(isActive, isPaused, handleStart);
   const handleDone = () => {
     const dateProcessed = new Date(order.dataEntry);
     dateProcessed.setSeconds(timer);
@@ -35,13 +34,13 @@ export const StopWatch = ({ order, getOrders }) => {
       }
     )
 
-    .then(response => {
-    
-      getOrders();
-  })
-  .catch(error => {
-    toast.error('ups no se actualizo');
-  });
+      .then(response => {
+
+        getOrders();
+      })
+      .catch(error => {
+        toast.error('ups no se actualizo');
+      });
 
 
 
@@ -55,7 +54,8 @@ export const StopWatch = ({ order, getOrders }) => {
         {
           !isActive && !isPaused ?
             <div>
-              <button className='btn-stopwatch' onClick={handleStart}>Start</button></div>
+              <button className='btn-stopwatch' onClick={handleStart}>Start</button>
+            </div>
             : (
               isPaused ? <div><button className='btn-stopwatch' onClick={handlePause}>Pause</button></div> :
                 <div><button className='btn-stopwatch' onClick={handleResume}>Resume</button></div>

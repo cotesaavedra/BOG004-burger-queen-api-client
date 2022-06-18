@@ -92,7 +92,7 @@ describe('Tests ChefScreen', () => {
          </AuthContext.Provider>
       );
       await waitFor(() => {
-         const order = screen.getByText('Order 1');
+         const order = screen.getByText('Orden 1');
          expect(order).toBeInTheDocument();
       });
    });

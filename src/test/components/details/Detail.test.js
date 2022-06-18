@@ -72,7 +72,7 @@ const ordersMock = [
 const dispatchMock = () => { };
 
 describe('Tests DetailOrderScreen', () => {
-  test('chef', async () => {
+  test('detail is text', async () => {
 
     render(
       <AuthContext.Provider value={{
@@ -83,8 +83,26 @@ describe('Tests DetailOrderScreen', () => {
       </AuthContext.Provider>
     );
     await waitFor(() => {
-      const detail = screen.getByText('Detail order: 1');
+      const detail = screen.getByText('Detalle De La Orden: 1');
       expect(detail).toBeInTheDocument();
     });
+
   });
+});
+
+test('detail product', async () => {
+
+  render(
+    <AuthContext.Provider value={{
+      user: userMock,
+      dispatch: dispatchMock
+    }}>
+      <DetailOrder order={ordersMock[0]} />
+    </AuthContext.Provider>
+  );
+  await waitFor(() => {
+    const product = screen.getByText('Sandwich de jamón y queso');
+    expect(product).toBeInTheDocument();
+  });
+
 });

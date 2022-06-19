@@ -22,7 +22,7 @@ export const DeleteUser = ({userToDelete, callUsers}) => {
     setmodalDelete(true);
   };
 
-  const handleDelete = () => {
+  const handleDelete = () => {     
     axios.delete(url, {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -33,13 +33,13 @@ export const DeleteUser = ({userToDelete, callUsers}) => {
       callUsers();
     })
       .catch(error => {
-        toast.error('Error al iniciar sesión');
+        toast.error('Error al eliminar usuario');
       });
   };
 
   return (
     <>
-      <FontAwesomeIcon icon={faTrash} onClick={handleShow} />
+      <FontAwesomeIcon data-testid="icon-delete" icon={faTrash} onClick={handleShow} />
       <Modal show={modalDelete} onHide={handleClose}>
         <Modal.Body>
           <div>

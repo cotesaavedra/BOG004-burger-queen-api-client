@@ -55,9 +55,9 @@ export const CreateUser = ({ callUsers }) => {
   return (
     <>
 
-      <button className='global-btn' onClick={handleCreate} > Nuevo Trabajador</button>
-      <Modal show={modalCreateUser} onHide={closeForm}>
-        <form className='form-user' onSubmit={handleSubmit((data) => userCreaterForm(data))}>
+      <button data-testid='icon-newEmployee'className='global-btn' onClick={handleCreate} > Nuevo Trabajador</button>
+      <Modal  data-testid='icon-modal-user'show={modalCreateUser} onHide={closeForm}>
+        <form  data-testid='icon-form-user' className='form-user' onSubmit={handleSubmit((data) => userCreaterForm(data))}>
           <Modal.Header closeButton>
             <Modal.Title>Crear Usuario</Modal.Title>
           </Modal.Header>
@@ -65,6 +65,7 @@ export const CreateUser = ({ callUsers }) => {
             <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
               <Form.Label>Email</Form.Label>
               <Form.Control
+                data-testid='icon-email-user'
                 type='email'
                 name='email'
                 placeholder='name@systers.xyz'
@@ -118,7 +119,7 @@ export const CreateUser = ({ callUsers }) => {
           </Modal.Body>
           <Modal.Footer>
             <button className='global-btn btn-cancel' onClick={closeForm}> Cancelar</button>
-            <button className='global-btn' type='submit'><FontAwesomeIcon icon={faCheck} /> Crear Usuario</button>
+            <button data-testid='icon-create' className='global-btn' type='submit'><FontAwesomeIcon  icon={faCheck} /> Crear Usuario</button>
           </Modal.Footer>
 
         </form>

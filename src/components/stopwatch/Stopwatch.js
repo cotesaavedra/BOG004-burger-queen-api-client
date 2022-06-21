@@ -38,7 +38,7 @@ export const StopWatch = ({ order, getOrders }) => {
         getOrders();
       })
       .catch(error => {
-        toast.error('ups no se actualizo');
+        toast.error('No se actualizo');
       });
 
 
@@ -60,7 +60,7 @@ export const StopWatch = ({ order, getOrders }) => {
                 <div><button className='btn-stopwatch' onClick={handleResume}>Resume</button></div>
             )
         }
-        <div><button className='btn-stopwatch' onClick={handleDone} disabled={!isActive} >Done</button></div>
+        <div><button data-testid='btn-Done' className='btn-stopwatch' onClick={handleDone} disabled={!isActive} >Done</button></div>
       </div>
     </>
   );

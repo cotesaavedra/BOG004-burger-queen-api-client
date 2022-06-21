@@ -1,10 +1,11 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import axios from "axios";
-import { AuthContext } from "../../../auth/authContext.js";
-import { ChefScreen } from "../../../components/chef/ChefScreen.js";
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { AuthContext } from '../../auth/authContext';
+import { CreateUser } from '../../components/Users/createUser/CreateUser';
+import axios from 'axios';
 
-const userMock = { token: '' };
+jest.mock('axios');
 const ordersMock = [
    {
       "id": 1,
@@ -70,30 +71,39 @@ const ordersMock = [
       "dateProcessed": "2022-03-05 16:00"
    }
 ];
-const dispatchMock = () => { };
-jest.mock('axios', () => {
-   return Object.assign(jest.fn(), {
-      get: jest.fn(),
-      post: jest.fn(),
-   });
-});
 
-describe('Tests ChefScreen', () => {
-   test('chef', async () => {
-      axios.get.mockResolvedValue(
+describe('prueba de crear usuarios', () => {
+   const userMock = {};
+   const callUsersMock = jest.fn();
+   const usersMock = [
+      {
+         "email": "cote.hopper@systers.xyz",
+         "password": "$2a$10$19aCEvJdU0CP4DyBuM9Ga.62T8iX19tmgDPMZFPlVlAoDG.ltBHFO",
+         "roles": {
+            "chef": true
+         },
+         "id": 4
+      }]
+   test('renderiza una modal al hacer click en createuser', () => {
+      axios.post.mockResolvedValue(
          { data: ordersMock }
       );
       render(
          <AuthContext.Provider value={{
             user: userMock,
-            dispatch: dispatchMock
          }}>
-            <ChefScreen />
+            <CreateUser users={usersMock} callUsers={callUsersMock}></CreateUser>
+
          </AuthContext.Provider>
-      );
-      await waitFor(() => {
-         const order = screen.getByText('Orden 1');
-         expect(order).toBeInTheDocument();
-      });
+      )
+      const newEmployee = screen.queryByTestId('icon-newEmployee');
+      fireEvent.click(newEmployee)
+      const modal = screen.queryByTestId('icon-modal-user');
+      expect(modal).toBeInTheDocument();
+      const email = screen.queryByTestId('icon-email-user');
+      expect(email).toBeInTheDocument()
+      const form = screen.queryByTestId('icon-form-user');
+      expect(form).toBeInTheDocument()
+
    });
 });

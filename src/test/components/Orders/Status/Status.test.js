@@ -54,7 +54,9 @@ describe('testeando componente OrdersScreen', () => {
                 <AuthContext.Provider value={{
                     user: userMock,
                 }}>
-                    <Status orders={orders} callOrders={callOrders}></Status>
+                    <table>
+                        <Status orders={orders} callOrders={callOrders}></Status>
+                    </table>
                 </AuthContext.Provider>
             </Router>
         )
@@ -106,7 +108,9 @@ describe('testeando componente OrdersScreen', () => {
                 <AuthContext.Provider value={{
                     user: userMock,
                 }}>
-                    <Status orders={orders} callOrders={callOrders}></Status>
+                    <table>
+                        <Status orders={orders} callOrders={callOrders}></Status>
+                    </table>
                 </AuthContext.Provider>
             </Router>
         )
@@ -116,5 +120,5 @@ describe('testeando componente OrdersScreen', () => {
             expect(axios.patch).toHaveBeenCalledTimes(1);
         })
     })
-    
+
 })

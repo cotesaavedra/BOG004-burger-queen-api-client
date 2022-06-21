@@ -3,6 +3,7 @@ import { AuthContext } from "../../../../auth/authContext";
 import PendingOrder from "../../../../components/pendingOrder/PendingOrder";
 import "@testing-library/jest-dom";
 
+
 const userMock = { token: '' };
 const ordersMock = [
   {
@@ -72,39 +73,26 @@ const ordersMock = [
 const dispatchMock = () => { };
 
 const setOrderSelectedMock = jest.fn();
-describe('Tests pendingOrder', () => {
-  test('chef', () => {
+// 
 
-    render(
-      <AuthContext.Provider value={{
-        user: userMock,
-        dispatch: dispatchMock
-      }}>
-        <PendingOrder Order={ordersMock[0]} />
-      </AuthContext.Provider>
-    );
-    
-      const pendingOrder = screen.getByText('Order 1');
-      expect(pendingOrder).toBeInTheDocument();
+test('pending', async () => {
 
+
+  render(
+    <AuthContext.Provider value={{
+      user: userMock,
+      dispatch: dispatchMock
+    }}>
+
+      <PendingOrder order={ordersMock[0]} setOrderSelected={setOrderSelectedMock} />
+    </AuthContext.Provider>
+  );
+
+  fireEvent.click(screen.getByTestId('btn-show-detail'));
+  await waitFor(() => {
+
+   expect(setOrderSelectedMock).toHaveBeenCalledWith(ordersMock[0]);
   });
-
-  // test('pending', () => {
-
-
-  //   render(
-  //     <AuthContext.Provider value={{
-  //       user: userMock,
-  //       dispatch: dispatchMock
-  //     }}>
-  //       <PendingOrder order={ordersMock[0]} setOrderSelected={setOrderSelectedMock} />
-  //     </AuthContext.Provider>
-  //   );
-
-  //   fireEvent.click(screen.getByTestId('btn-show-detail'));
-  //   expect(setOrderSelectedMock).toHaveBeenCalledWith(ordersMock[0]);
-  //   // await waitFor(() => {
-      
-  //   // });
-  // });
 });
+
+

@@ -1,5 +1,5 @@
 import './WaiterScreen.css';
-import { Row, Col, Collapse } from 'react-bootstrap';
+import { Col, Collapse, Row } from 'react-bootstrap';
 import { useContext, useState, useEffect, useCallback} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faCutlery, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -41,6 +41,7 @@ export const WaiterScreen = () => {
   }, [callProducts])
 
   return (
+
     <Row id='row-container'>
       <NavLeft>
         <div data-testid='btn-fetch' className='comp-menu' id='menu-active'>

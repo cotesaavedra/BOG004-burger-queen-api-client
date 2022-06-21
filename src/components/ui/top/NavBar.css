@@ -21,3 +21,22 @@
     color: rgba(255,255,255,.75) !important;
     font-weight: 700;
 }
+@media only screen and (max-width : 420px) {
+    .nav-link{
+        display: none;
+    }
+    .navbar {
+        all: unset;
+        display: flex;
+        flex-wrap: inherit !important;
+    }
+    .navbar-nav{
+        flex-direction: row !important;
+    }
+    .navbar-nav a{
+        display: none !important;
+    }
+    .navbar-nav span{
+        display: none !important;
+    }
+    }

@@ -54,3 +54,15 @@ code {
   color: #000000 !important;
   font-weight: 600;
 }
+@media only screen and (max-width : 1224px) {
+  .row>* {
+     width: auto !important;
+  }
+  #row-container {
+     float: left;
+  }
+  .row{
+    display: inline !important;
+   }
+}
+

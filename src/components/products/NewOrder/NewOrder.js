@@ -35,7 +35,7 @@ const NewOrder = ({ products, setProducts }) => {
                     Cliente
                 </Form.Label>
                 <InputGroup className="mb-2" required>
-                    <FormControl data-testid='name-client' type='text' className='form-control' name='Cliente' placeholder='Cliente'  onChange={handleInputChange} />
+                    <FormControl data-testid='name-client' type='text' className='form-control' name='Cliente' placeholder='Cliente'  required onChange={handleInputChange} />
                 </InputGroup>
                 <Ordered products={products} setProducts={setProducts} />
             </Col>

@@ -61,8 +61,7 @@ export const AdminScreen = () => {
           </div>
         </div>
       </NavLeft>
-      <Col lg={10}>
-
+      <Col class='col-lg-10'>
         <ViewUsers users={users} setUsers={setUsers} callUsers={callUsers} />
       </Col>
     </Row>

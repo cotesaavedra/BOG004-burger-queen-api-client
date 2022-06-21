@@ -28,12 +28,17 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-
   }
-  
   
   .buttons{
       padding: 0;
   }
 
  }
+ /* @media only screen and (max-width :767px) {
+  #row-container {
+     height: 90vh;
+     width: 98vw;
+     text-align: center;
+  }
+} */

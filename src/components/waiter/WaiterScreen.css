@@ -35,9 +35,11 @@ hr.solid {
 
 #nav-collapse {
     height: 85vh;
-    box-shadow: 0px 5px 10px -6px black;
     padding-top: 10px;
 }
+/* .col-lg-5 #nav-collapse{
+    box-shadow: 0px 5px 10px -6px black;
+} */
 #nav-collapse .collapse-h5{
     background-color: #f2f2f2;
     font-weight: 700;
@@ -47,4 +49,27 @@ hr.solid {
 }
 #menu-active{
     background-color: #5AA02A;
+}
+@media only screen and (max-width : 1224px) {
+.products-container {
+    flex-direction: column;
+}
+#column-product {
+    justify-content: center;
+}
+#row-container {
+    float: none;
+ }
+ .global-btn {
+    margin: 10px 0px;
+ }
+ #title-menu {
+    display: none;
+ }
+ #title-menu hr {
+    display: none;
+ }
+ .col-lg-5 #nav-collapse{
+     box-shadow: none;
+ }
 }

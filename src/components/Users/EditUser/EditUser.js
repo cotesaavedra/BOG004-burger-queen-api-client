@@ -25,6 +25,7 @@ export const EditUser = ({ userToEdit, callUsers }) => {
   };
 
   const handleUpdate = (info) => {
+    console.log('Holaaa')
     setShow(true);
     let rol = {};
     if (info.rol === 'admin') {
@@ -107,6 +108,7 @@ export const EditUser = ({ userToEdit, callUsers }) => {
             <Form.Group className='mb-3' controlId='exampleForm.ControlInput3'>
               <Form.Label>Contraseña</Form.Label>
               <Form.Control
+              data-testid='password'
                 type='password'
                 name='password'
                 placeholder='6 caracteres mínimo'

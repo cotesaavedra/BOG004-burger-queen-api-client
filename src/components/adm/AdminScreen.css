@@ -1,0 +1,4 @@
+#row-container {
+    --bs-gutter-x: 0 rem;
+    height: 90vh;
+}

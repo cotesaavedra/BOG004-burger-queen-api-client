@@ -142,9 +142,9 @@ export const LoginScreen = () => {
                     </InputGroup>
                   </Col>
                   <Col xs="auto">
-                    <Button type='submit' variant="success" className='btn float-right login_btn' value='Login' onClick={toAccess} >
+                    <button type='submit'className='global-btn' value='Login' onClick={toAccess} >
                       Ingresar
-                    </Button>
+                    </button>
                   </Col>
                 </Row>
               </Form>
